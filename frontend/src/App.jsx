@@ -8,7 +8,7 @@ import AggregationEngineView from './components/AggregationEngineView';
 import ApplicationTrackerView from './components/ApplicationTrackerView';
 import ProfileMatcherModal from './components/ProfileMatcherModal';
 import { fetchOpportunities, fetchStats, fetchSources, fetchBookmarks, addBookmark, removeBookmark, triggerSyncAll } from './services/api';
-import { Award, CheckCircle2, AlertCircle } from 'lucide-react';
+import { ShieldCheck, AlertCircle, Sparkles } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('browse');
@@ -127,6 +127,7 @@ export default function App() {
 
   return (
     <div className="app-container">
+      <div className="top-gov-accent-bar" />
       <Navbar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -135,32 +136,38 @@ export default function App() {
       />
 
       <main className="main-content">
-        {/* Project Review Banner */}
-        <div className="demo-banner">
-          <div>
-            <div className="demo-banner-title">
-              <Award size={18} />
-              <span>Mini Project First Review Presentation • SIT Tumkur (Dept. of CSE)</span>
+        {/* Official Portal Notice & Verification Strip */}
+        <div className="gov-hero-banner">
+          <div className="gov-hero-content">
+            <div className="gov-hero-badge">
+              <ShieldCheck size={16} />
+              <span>Verified National Government Aggregator</span>
             </div>
-            <p style={{ fontSize: '0.8rem', opacity: 0.9, marginTop: '0.2rem' }}>
-              Guide: <strong>Dr. Anupama T A</strong> | Team: Narendra Kumar Yadav, Nongthombam Sanathoi Singh, Rahul Dadimana Kshetri, Tomthilnganba Soraisham
+            <h2 className="gov-hero-title">
+              Centralized Government Opportunity Portal
+            </h2>
+            <p className="gov-hero-subtitle">
+              Automated aggregation, gazette monitoring, and eligibility matching across UPSC, SSC, AICTE, NSP, DRDO, ISRO, CSIR, DST, BARC & State Public Service Commissions.
             </p>
           </div>
 
-          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-            <span className="demo-pill" style={{ background: '#22c55e', color: '#ffffff' }}>
-              ✓ Objective 1: Aggregation Engine [100%]
-            </span>
-            <span className="demo-pill" style={{ background: '#22c55e', color: '#ffffff' }}>
-              ✓ Objective 2: Search & Filter [100%]
-            </span>
-            <span className="demo-pill" style={{ background: '#3b82f6', color: '#ffffff' }}>
-              ⚡ Objective 3 & 4: Preview [65-70%]
-            </span>
+          <div className="gov-hero-stats">
+            <div className="hero-stat-pill">
+              <span className="dot active"></span>
+              <strong>{stats ? stats.totalOpportunities : '50+'} Verified Openings</strong>
+            </div>
+            <div className="hero-stat-pill">
+              <span className="dot pulse"></span>
+              <strong>{sources ? sources.length : 12} Portals Monitored</strong>
+            </div>
+            <div className="hero-stat-pill">
+              <Sparkles size={14} color="#f59e0b" />
+              <span>Real-Time Gazette Sync</span>
+            </div>
           </div>
         </div>
 
-        {/* Tab 1: Browse & Search Opportunities (Objective 2) */}
+        {/* Tab 1: Browse & Search Opportunities */}
         {activeTab === 'browse' && (
           <>
             <StatsCards stats={stats} />
@@ -179,9 +186,15 @@ export default function App() {
               })}
             />
 
+            <div className="results-bar">
+              <span>
+                Showing <strong>{opportunities.length}</strong> available opportunities matching criteria
+              </span>
+            </div>
+
             {loading ? (
               <div className="empty-state">
-                <p>Loading centralized government opportunities...</p>
+                <p>Loading verified government opportunities...</p>
               </div>
             ) : opportunities.length > 0 ? (
               <div className="opportunities-grid">
@@ -200,14 +213,14 @@ export default function App() {
                 <AlertCircle className="empty-state-icon" />
                 <h3>No Opportunities Match Your Filter Criteria</h3>
                 <p style={{ fontSize: '0.85rem', color: '#64748b', marginTop: '0.3rem' }}>
-                  Try relaxing your search keywords, qualification, or deadline filter.
+                  Try resetting filters or searching with broader keywords.
                 </p>
               </div>
             )}
           </>
         )}
 
-        {/* Tab 2: Data Aggregation Engine (Objective 1) */}
+        {/* Tab 2: Data Aggregation Engine */}
         {activeTab === 'aggregation' && (
           <AggregationEngineView
             sources={sources}
@@ -216,7 +229,7 @@ export default function App() {
           />
         )}
 
-        {/* Tab 3: Application Tracker (Objective 4 Preview) */}
+        {/* Tab 3: Application Tracker */}
         {activeTab === 'tracker' && (
           <ApplicationTrackerView
             bookmarks={bookmarks}
@@ -224,7 +237,7 @@ export default function App() {
           />
         )}
 
-        {/* Tab 4: Eligibility Matcher (Objective 2 & 3 Preview) */}
+        {/* Tab 4: Eligibility Matcher */}
         {activeTab === 'matcher' && (
           <ProfileMatcherModal
             opportunities={opportunities}

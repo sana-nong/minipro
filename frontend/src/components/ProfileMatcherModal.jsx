@@ -49,10 +49,10 @@ export default function ProfileMatcherModal({ opportunities, onSelectOpportunity
       }}>
         <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <UserCheck size={22} color="#1e3a8a" />
-          Automated Profile-to-Opportunity Eligibility Engine
+          Automated Profile Eligibility Matcher
         </h2>
         <p style={{ fontSize: '0.85rem', color: '#64748b', marginTop: '0.2rem', marginBottom: '1.25rem' }}>
-          Fulfills <strong>Objective 2 & 3</strong>: Evaluates candidate credentials against requirements across central and state government notifications.
+          Instantly evaluate your qualification, age, and academic percentage against all active central and state government notifications.
         </p>
 
         <form onSubmit={handleMatchAll} style={{
@@ -104,7 +104,7 @@ export default function ProfileMatcherModal({ opportunities, onSelectOpportunity
               style={{ width: '100%', justifyContent: 'center', height: '42px' }}
               disabled={loading}
             >
-              {loading ? 'Evaluating All Records...' : 'Run Eligibility Matching Engine'}
+              {loading ? 'Evaluating All Records...' : 'Run Eligibility Check'}
             </button>
           </div>
         </form>

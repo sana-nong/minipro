@@ -50,7 +50,7 @@ export default function ApplicationTrackerView({ bookmarks, onRefreshBookmarks }
               Candidate Application Pipeline & Tracking
             </h2>
             <p style={{ fontSize: '0.85rem', color: '#64748b', marginTop: '0.2rem' }}>
-              Fulfills <strong>Objective 4 preview (60-70% Milestone)</strong>: Allows candidates to bookmark, track deadline reminders, and manage application statuses.
+              Personalized candidate workspace to bookmark target notifications, track upcoming deadlines, and organize application stages.
             </p>
           </div>
           <span className="demo-pill" style={{ background: '#dbeafe', color: '#1e40af', padding: '0.4rem 0.85rem' }}>
@@ -156,7 +156,7 @@ export default function ApplicationTrackerView({ bookmarks, onRefreshBookmarks }
           <BookmarkCheck className="empty-state-icon" />
           <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#0f172a' }}>No Applications Tracked Yet</h3>
           <p style={{ fontSize: '0.85rem', color: '#64748b', marginTop: '0.3rem' }}>
-            Go to the Browse & Search tab and click the bookmark icon on any opportunity to track your application here.
+            Browse through active opportunities and bookmark any opening to manage your application timeline here.
           </p>
         </div>
       )}

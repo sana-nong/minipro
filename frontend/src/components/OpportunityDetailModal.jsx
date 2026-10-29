@@ -34,7 +34,7 @@ export default function OpportunityDetailModal({ opportunity, onClose, isBookmar
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem' }}>
               <span className="category-tag tag-recruitment">{opportunity.category}</span>
-              <span style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>Source: {opportunity.sourceAgency}</span>
+              <span style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>Source Agency: {opportunity.sourceAgency}</span>
             </div>
             <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a' }}>{opportunity.title}</h2>
           </div>
@@ -56,7 +56,7 @@ export default function OpportunityDetailModal({ opportunity, onClose, isBookmar
             border: '1px solid #e2e8f0'
           }}>
             <div>
-              <p style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600 }}>ORGANIZATION</p>
+              <p style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600 }}>ISSUING DEPARTMENT / PSU</p>
               <p style={{ fontSize: '0.9rem', fontWeight: 700, color: '#0f172a' }}>{opportunity.organization}</p>
             </div>
             <div>
@@ -77,16 +77,16 @@ export default function OpportunityDetailModal({ opportunity, onClose, isBookmar
 
           {/* Description */}
           <div style={{ marginBottom: '1.5rem' }}>
-            <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', color: '#0f172a' }}>Description & Scope</h3>
+            <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', color: '#0f172a' }}>Notification Summary & Scope</h3>
             <p style={{ fontSize: '0.9rem', color: '#334155', lineHeight: '1.6' }}>{opportunity.description}</p>
           </div>
 
           {/* Official Eligibility Requirements */}
           <div style={{ marginBottom: '1.5rem' }}>
-            <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', color: '#0f172a' }}>Eligibility Criteria</h3>
+            <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', color: '#0f172a' }}>Official Eligibility Criteria</h3>
             <div style={{ background: '#eff6ff', borderLeft: '4px solid #2563eb', padding: '1rem', borderRadius: '4px' }}>
               <p style={{ fontSize: '0.9rem', color: '#1e3a8a', fontWeight: 600, marginBottom: '0.4rem' }}>
-                Qualification: {opportunity.qualification}
+                Required Qualification: {opportunity.qualification}
               </p>
               <p style={{ fontSize: '0.85rem', color: '#1e40af' }}>{opportunity.eligibilityCriteria}</p>
               <div style={{ display: 'flex', gap: '1.5rem', marginTop: '0.6rem', fontSize: '0.8rem', color: '#1e40af' }}>
@@ -97,7 +97,7 @@ export default function OpportunityDetailModal({ opportunity, onClose, isBookmar
             </div>
           </div>
 
-          {/* Interactive Candidate Eligibility Matcher (Objective 2 feature) */}
+          {/* Interactive Candidate Eligibility Matcher */}
           <div style={{
             background: '#ffffff',
             border: '1px solid #cbd5e1',
@@ -107,7 +107,7 @@ export default function OpportunityDetailModal({ opportunity, onClose, isBookmar
           }}>
             <h4 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.75rem', color: '#0f172a', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
               <HelpCircle size={16} color="#2563eb" />
-              Live Profile Compatibility Checker (Objective 2)
+              Instant Eligibility & Compatibility Checker
             </h4>
 
             <form onSubmit={handleEligibilityCheck} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '0.75rem', marginBottom: '1rem' }}>
@@ -151,7 +151,7 @@ export default function OpportunityDetailModal({ opportunity, onClose, isBookmar
                   style={{ width: '100%', justifyContent: 'center' }}
                   disabled={checking}
                 >
-                  {checking ? 'Checking...' : 'Evaluate Eligibility'}
+                  {checking ? 'Checking...' : 'Check My Eligibility'}
                 </button>
               </div>
             </form>

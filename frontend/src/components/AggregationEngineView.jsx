@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Database, RefreshCw, CheckCircle2, Clock, Globe, ArrowRight, Terminal } from 'lucide-react';
+import { Database, RefreshCw, CheckCircle2, Clock, Globe, Terminal, ShieldCheck } from 'lucide-react';
 import { triggerSyncAll, triggerSyncSource } from '../services/api';
 
 export default function AggregationEngineView({ sources, onRefreshSources, onRefreshOpportunities }) {
   const [logs, setLogs] = useState([
     'System initialized.',
-    'Objective 1 Data Aggregation Engine: Online.',
-    'Crawler listening to 7 official government feeds and portals.',
+    'Multi-Source Data Aggregation Engine: Online.',
+    'Monitoring 12 official government feeds, gazettes, and portals.',
     'Deduplication & Normalization Service active.'
   ]);
   const [runningSync, setRunningSync] = useState(false);
@@ -19,13 +19,13 @@ export default function AggregationEngineView({ sources, onRefreshSources, onRef
 
   const handleSyncAll = async () => {
     setRunningSync(true);
-    addLog('Initiating batch aggregation across all official government sources...');
+    addLog('Initiating batch aggregation across all official government portals & gazettes...');
     try {
       const results = await triggerSyncAll();
       results.forEach(r => {
         addLog(`Source: ${r.agencyCode} (${r.sourceName}) -> Status: ${r.status} | Found: ${r.itemsFound} | New: ${r.newAdded} | Updated: ${r.updated} (${r.executionTimeMs}ms)`);
       });
-      addLog('Batch aggregation finished successfully. Central database updated.');
+      addLog('Batch aggregation finished successfully. Central opportunity catalog updated.');
       if (onRefreshSources) onRefreshSources();
       if (onRefreshOpportunities) onRefreshOpportunities();
     } catch (err) {
@@ -67,7 +67,7 @@ export default function AggregationEngineView({ sources, onRefreshSources, onRef
               Automated Government Data Aggregation Engine
             </h2>
             <p style={{ fontSize: '0.85rem', color: '#64748b', marginTop: '0.2rem' }}>
-              Fulfills <strong>Objective 1</strong>: Automatically collects, parses RSS feeds/web scrapers, extracts normalized schemas, and deduplicates government opportunities.
+              Continuously monitors official gazettes, agency portals, and RSS feeds with automatic schema normalization and cryptographic deduplication.
             </p>
           </div>
 
@@ -88,7 +88,7 @@ export default function AggregationEngineView({ sources, onRefreshSources, onRef
               <tr>
                 <th>Agency</th>
                 <th>Official Portal</th>
-                <th>Protocol</th>
+                <th>Extraction Protocol</th>
                 <th>Status</th>
                 <th>Last Synchronized</th>
                 <th>Total Centralized</th>

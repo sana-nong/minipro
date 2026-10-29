@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layers, RefreshCw, BookmarkCheck, Search, Database, UserCheck, ShieldCheck } from 'lucide-react';
+import { Landmark, RefreshCw, BookmarkCheck, Search, Database, UserCheck } from 'lucide-react';
 
 export default function Navbar({ activeTab, setActiveTab, onTriggerSync, isSyncing }) {
   return (
@@ -7,11 +7,14 @@ export default function Navbar({ activeTab, setActiveTab, onTriggerSync, isSynci
       <div className="nav-inner">
         <div className="brand-section">
           <div className="brand-badge">
-            <Layers size={24} />
+            <Landmark size={24} />
           </div>
           <div className="brand-info">
-            <h1>Centralized Government Opportunity Platform</h1>
-            <p>Siddaganga Institute of Technology, Tumkur • Dept. of CSE</p>
+            <div className="brand-title-wrap">
+              <h1>Centralized Government Opportunity Portal</h1>
+              <span className="official-gov-badge">gov.in aggregator</span>
+            </div>
+            <p>Unified Citizen & Student Portal for Recruitment, Scholarships, Fellowships & Internships</p>
           </div>
         </div>
 
@@ -21,7 +24,7 @@ export default function Navbar({ activeTab, setActiveTab, onTriggerSync, isSynci
             onClick={() => setActiveTab('browse')}
           >
             <Search size={16} />
-            <span>Browse & Search</span>
+            <span>Browse Opportunities</span>
           </button>
 
           <button
@@ -37,7 +40,7 @@ export default function Navbar({ activeTab, setActiveTab, onTriggerSync, isSynci
             onClick={() => setActiveTab('tracker')}
           >
             <BookmarkCheck size={16} />
-            <span>Application Tracker</span>
+            <span>Application Pipeline</span>
           </button>
 
           <button
