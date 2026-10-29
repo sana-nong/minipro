@@ -37,12 +37,10 @@ public class Opportunity {
     @Column(nullable = false, length = 150)
     private String location;
 
-    @Lob
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT", length = 5000)
     private String description;
 
-    @Lob
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT", length = 5000)
     private String eligibilityCriteria;
 
     private Integer minAge;

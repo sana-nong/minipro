@@ -52,11 +52,12 @@ public class SearchFilterService {
                 String searchPattern = "%" + filter.getQuery().trim().toLowerCase() + "%";
                 Predicate titlePred = cb.like(cb.lower(root.get("title")), searchPattern);
                 Predicate orgPred = cb.like(cb.lower(root.get("organization")), searchPattern);
+                Predicate agencyPred = cb.like(cb.lower(root.get("sourceAgency")), searchPattern);
                 Predicate descPred = cb.like(cb.lower(root.get("description")), searchPattern);
                 Predicate qualPred = cb.like(cb.lower(root.get("qualification")), searchPattern);
                 Predicate fieldPred = cb.like(cb.lower(root.get("field")), searchPattern);
 
-                predicates.add(cb.or(titlePred, orgPred, descPred, qualPred, fieldPred));
+                predicates.add(cb.or(titlePred, orgPred, agencyPred, descPred, qualPred, fieldPred));
             }
 
             if (filter.getCategory() != null) {
