@@ -11,7 +11,8 @@ import { fetchOpportunities, fetchStats, fetchSources, fetchBookmarks, addBookma
 import { ShieldCheck, AlertCircle, Sparkles } from 'lucide-react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('browse');
+  const searchParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : new URLSearchParams();
+  const [activeTab, setActiveTab] = useState(searchParams.get('tab') || 'browse');
   const [opportunities, setOpportunities] = useState([]);
   const [stats, setStats] = useState(null);
   const [sources, setSources] = useState([]);
@@ -21,8 +22,8 @@ export default function App() {
   const [isSyncing, setIsSyncing] = useState(false);
 
   const [filters, setFilters] = useState({
-    query: '',
-    category: 'ALL',
+    query: searchParams.get('query') || '',
+    category: searchParams.get('category') || 'ALL',
     qualification: 'ALL',
     location: 'ALL',
     status: 'ALL',
@@ -39,6 +40,13 @@ export default function App() {
   useEffect(() => {
     loadOpportunities();
   }, [filters]);
+
+  useEffect(() => {
+    if (opportunities.length > 0 && searchParams.get('modal') !== null) {
+      const idx = parseInt(searchParams.get('modal'), 10) || 0;
+      setSelectedOpportunity(opportunities[idx] || opportunities[0]);
+    }
+  }, [opportunities]);
 
   const loadAllData = async () => {
     setLoading(true);
