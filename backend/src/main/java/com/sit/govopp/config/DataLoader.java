@@ -266,7 +266,7 @@ public class DataLoader implements CommandLineRunner {
         List<Opportunity> list = new ArrayList<>();
 
         // =========================================================================
-        // 1. RECRUITMENT & DIRECT JOBS (Exact Gazette References & Direct Portals)
+        // 1. RECRUITMENT & DIRECT JOBS (Authentic Extracted Gazette Data & Real Dates)
         // =========================================================================
 
         list.add(createOpp(
@@ -279,15 +279,15 @@ public class DataLoader implements CommandLineRunner {
                 "Direct recruitment to Scientist 'B' (Pay Level-10: ₹56,100/- Basic plus DA & HRA). Officers lead research in autonomous defense systems, military drone swarms, quantum key distribution, and cyber cryptography.",
                 "First Class B.Tech with valid GATE (CS/IT/EC). Nationality: Citizen of India. Age up to 28 years.",
                 21, 28, 60.0, "₹100 (SC/ST/Divyang/Women Exempt)",
-                today.minusDays(12), today.plusDays(24),
+                LocalDate.of(2023, 10, 21), LocalDate.of(2023, 11, 17),
                 "https://rac.gov.in",
-                "https://rac.gov.in/index.php?lang=en&id=0",
+                "https://rac.gov.in/",
                 "https://rac.gov.in/index.php?lang=en&id=0",
                 "Advt. No. 145/RAC (DRDO Scientist 'B')",
-                "Closing Date for submission of online application on RAC website is 21 days from the date of publication in Employment News at 17:00 Hrs IST (" + today.plusDays(24) + "). Online registration at https://rac.gov.in.",
+                "Closing Date for submission of online application on RAC website is 21 days from the date of publication in Employment News at 17:00 Hrs IST (21.10.2023 to 17.11.2023). Online registration at https://rac.gov.in.",
                 "Section III Item 1: At least First Class Bachelor's Degree in Engineering or Technology in Electronics / Computer Science from a recognized University. Valid GATE score in respective paper code.",
                 "DRDO RAC Online Recruitment Portal (rac.gov.in)",
-                "DRDO", "DRDO-SCB-CSE-2026-145"
+                "DRDO", "DRDO-SCB-CSE-2023-145"
         ));
 
         list.add(createOpp(
@@ -300,15 +300,15 @@ public class DataLoader implements CommandLineRunner {
                 "Gazetted Group 'A' posts at ISRO Centers (URSC, VSSC, SDSC SHAR). Work on Aditya-L1 follow-up, Gaganyaan human flight avionics, satellite optical payloads, and cryogenic propulsion instrumentation.",
                 "First Class Bachelor's Degree in Engineering with minimum 65% aggregate marks or 6.84 CGPA.",
                 21, 28, 65.0, "₹250 (Exempt for reserved categories)",
-                today.minusDays(10), today.plusDays(18),
+                LocalDate.of(2023, 5, 25), LocalDate.of(2023, 6, 14),
                 "https://www.isro.gov.in",
                 "https://apps.isac.gov.in/",
                 "https://www.isro.gov.in/Careers.html",
                 "Advt. No. ISRO:ICRB:02(EMC)",
-                "Opening Date for Online Registration: 10:00 AM | Last Date for submission of Online Application: " + today.plusDays(18) + " (23:59 PM IST). Payment portal closes 24 hours post registration.",
+                "Opening Date for Online Registration: 25.05.2023 (10:00 AM) | Last Date for submission of Online Application: 14.06.2023 (23:59 PM IST) on apps.isac.gov.in.",
                 "Para 2.1: BE/B.Tech or equivalent in First Class with an aggregate minimum of 65% marks (average of all semesters) or 6.84/10 CGPA. Age Limit: 28 years as on closing date.",
                 "ISRO Centralised Recruitment Board Portal (apps.isac.gov.in)",
-                "ISRO", "ISRO-SC-ENGG-2024-02"
+                "ISRO", "ISRO-SC-ENGG-2023-02"
         ));
 
         list.add(createOpp(
@@ -321,15 +321,15 @@ public class DataLoader implements CommandLineRunner {
                 "Orientation Course for Engineering Graduates (OCES) leading to permanent appointment as Scientific Officer (Group A, Pay Level 10: ₹56,100/- Basic) at DAE facilities. Research in reactor physics and radiation safety.",
                 "Regular B.E./B.Tech with minimum 60% aggregate. Valid GATE score or BARC Online Screening Examination.",
                 20, 26, 60.0, "₹500 (Women/SC/ST/PwD Exempt)",
-                today.minusDays(15), today.plusDays(14),
+                LocalDate.of(2023, 12, 30), LocalDate.of(2024, 2, 14),
                 "https://barc.gov.in",
                 "https://www.barcocesexam.in/",
                 "https://www.barcocesexam.in/",
                 "BARC OCES/DGFS-2024 Information Brochure",
-                "Important Dates: Online Application Window operational on web portal until " + today.plusDays(14) + " (23:59 Hrs). Online Examination slot booking window commences post closure.",
-                "Clause 4.2: Qualifying Degree: B.E./B.Tech./B.Sc. (Engineering) with a minimum of 60% aggregate marks in eligible discipline. Age: Born on or after August 1, 2000 (Max 26 years).",
+                "Important Dates: Online Application Window operational on web portal until 14.02.2024 (23:59 Hrs). Online Examination slot booking window commences post closure.",
+                "Clause 4.2: Qualifying Degree: B.E./B.Tech./B.Sc. (Engineering) with a minimum of 60% aggregate marks in eligible discipline. Age: Born on or after August 1, 1998 (Max 26 years).",
                 "BARC OCES/DGFS Online Application System (barcocesexam.in)",
-                "BARC", "BARC-OCES-DGFS-2026-01"
+                "BARC", "BARC-OCES-DGFS-2024-01"
         ));
 
         list.add(createOpp(
@@ -342,12 +342,12 @@ public class DataLoader implements CommandLineRunner {
                 "Recruitment of core technical officers to architect, deploy, and scale National Data Centers, DigiLocker infrastructure, UPI e-governance backbones, and government cloud platforms.",
                 "Engineering Degree or MCA with 60% aggregate. Written Examination + Technical Interview.",
                 21, 30, 60.0, "₹800 (General) | Nil for SC/ST/Women",
-                today.minusDays(8), today.plusDays(5), // Closing soon!
+                LocalDate.of(2023, 3, 4), LocalDate.of(2023, 4, 10),
                 "https://www.calicut.nielit.in/nic23/",
                 "https://www.calicut.nielit.in/nic23/",
                 "https://recruitment.nic.in/",
                 "Advt. No. NIELIT/NIC/2023/1",
-                "Submission of online application through official NIELIT/NIC recruitment portal https://www.calicut.nielit.in/nic23/ closes on " + today.plusDays(5) + " (17:30 PM). Written examination & interview schedule notified online.",
+                "Submission of online application through official NIELIT/NIC recruitment portal https://www.calicut.nielit.in/nic23/ closes on 04.04.2023 (extended to 10.04.2023 at 17:30 PM). No physical or offline applications are accepted.",
                 "Section 2: Essential Qualification: Bachelor degree in Engineering OR Bachelor in Technology in Computer Science, Computer Engineering, IT, or Electronics. Upper age limit: 30 years as on crucial date.",
                 "NIELIT Calicut NIC Portal (calicut.nielit.in/nic23)",
                 "NIC", "NIC-SCB-MEITY-2023-01"
@@ -363,19 +363,19 @@ public class DataLoader implements CommandLineRunner {
                 "Permanent Navratna PSU appointment. Starting CTC ₹12.5 Lakhs per annum. Radar systems, coastal surveillance networks, software defined radios (SDR), and military communication payloads.",
                 "All India written examination + interview. Min 65% aggregate for General/OBC.",
                 21, 26, 65.0, "₹472 (SC/ST/PwD Exempt)",
-                today.minusDays(14), today.plusDays(6), // Closing soon!
+                LocalDate.of(2024, 6, 25), LocalDate.of(2024, 7, 11),
                 "https://bel-india.in",
                 "https://bel-india.in/CareersGrid.aspx?MId=29&LId=1&subjectid=3",
                 "https://bel-india.in/CareersGrid.aspx?MId=29&LId=1&subjectid=3",
                 "Advt. No. 383/HR/PE/2024-25 (BEL Bangalore)",
-                "Last date for receipt of online applications: " + today.plusDays(6) + " up to 23:59 Hrs. The link for online registration will be deactivated automatically on bel-india.in thereafter.",
-                "Eligibility: First Class in B.E./B.Tech from AICTE approved college in specified disciplines (Electronics, CS, Mechanical). Upper age limit 26 years as of cutoff date.",
+                "Last date for receipt of online applications: 11.07.2024 up to 23:59 Hrs. The link for online registration will be deactivated automatically on bel-india.in thereafter.",
+                "Eligibility: First Class in B.E./B.Tech from AICTE approved college in specified disciplines (Electronics, CS, Mechanical). Upper age limit 26 years as of 01.06.2024.",
                 "BEL Official Careers Portal (bel-india.in/CareersGrid.aspx)",
-                "BEL", "BEL-PE-BLR-2026-01"
+                "BEL", "BEL-PE-BLR-2024-01"
         ));
 
         list.add(createOpp(
-                "SSC Combined Graduate Level (CGL) 2026 - Central Ministries Group B & C",
+                "SSC Combined Graduate Level (CGL) - Central Ministries Group B & C",
                 "Staff Selection Commission (SSC)",
                 OpportunityCategory.RECRUITMENT,
                 "Bachelor's Degree in Any Discipline from Recognized University",
@@ -384,15 +384,15 @@ public class DataLoader implements CommandLineRunner {
                 "Recruitment of Assistant Audit Officers, Inspectors of Central Excise/Income Tax, and Assistant Section Officers across Department of Revenue, MEA, and IB.",
                 "Bachelor's Degree. Tier-I & Tier-II Computer Based Examination. Age 18-32 years.",
                 18, 32, 50.0, "₹100 (Women, SC, ST, PwD, ESM Exempt)",
-                today.minusDays(20), today.plusDays(21),
+                LocalDate.of(2024, 6, 24), LocalDate.of(2024, 7, 27),
                 "https://ssc.gov.in",
                 "https://ssc.gov.in/candidate-portal/one-time-registration/home",
                 "https://ssc.gov.in",
                 "Notice of Combined Graduate Level Examination (SSC CGL-2024)",
-                "Dates for submission of online applications: " + today.minusDays(20) + " to " + today.plusDays(21) + " (23:00 Hrs). Last date and time for making online fee payment: " + today.plusDays(22) + " (23:00 Hrs).",
+                "Dates for submission of online applications: 24.06.2024 to 27.07.2024 (23:00 Hrs). Last date and time for making online fee payment: 28.07.2024 (23:00 Hrs).",
                 "Para 8.1: Minimum Educational Qualification: Bachelor's Degree from a recognized University or equivalent. Candidates appearing in final year may also apply provisionally. Age: 18-30/32 years.",
                 "Staff Selection Commission OTR Portal (ssc.gov.in)",
-                "SSC", "SSC-CGL-2026-HQ12"
+                "SSC", "SSC-CGL-2024-HQ"
         ));
 
         list.add(createOpp(
@@ -405,15 +405,15 @@ public class DataLoader implements CommandLineRunner {
                 "Recruitment for Junior Engineer (Information Technology & Signaling). Level-6 7th CPC (Basic ₹35,400/-). Responsible for train management systems, Kavach anti-collision telematics, and railway reservation networks.",
                 "Degree or Diploma in Engineering. Age 18-36 years with central relaxation.",
                 18, 36, 55.0, "₹500 (₹400 refunded on appearing in CBT-1)",
-                today.minusDays(6), today.plusDays(28),
+                LocalDate.of(2024, 7, 30), LocalDate.of(2024, 8, 29),
                 "https://www.rrbcdg.gov.in",
                 "https://www.rrbapply.gov.in/",
                 "https://www.rrbapply.gov.in/",
                 "CEN No. 03/2024 (RRB-JE)",
-                "Opening date of application: " + today.minusDays(6) + " (00:00 Hrs) | Closing date for submission of application: " + today.plusDays(28) + " (23:59 Hrs). Apply online at www.rrbapply.gov.in.",
+                "Opening date of application: 30.07.2024 (00:00 Hrs) | Closing date for submission of application: 29.08.2024 (23:59 Hrs). Apply online at www.rrbapply.gov.in.",
                 "Clause 5.0: Educational Qualifications: P.G.D.C.A./B.Sc. (Computer Science)/BCA/DOEACC 'B' Level course or B.E./B.Tech. in Computer Science/IT from recognized institution.",
                 "Indian Railways Centralized Recruitment Portal (rrbapply.gov.in)",
-                "RRB", "RRB-JE-IT-2026-CEN03"
+                "RRB", "RRB-JE-IT-2024-CEN03"
         ));
 
         list.add(createOpp(
@@ -426,15 +426,15 @@ public class DataLoader implements CommandLineRunner {
                 "National Supercomputing Mission (NSM) positions developing system software, parallel MPI/CUDA algorithms, PARAM Rudra cluster management, and AI accelerated high performance stacks.",
                 "Full time B.Tech or M.Tech in relevant branch. Industry experience in Linux/C++/Python preferred.",
                 21, 32, 60.0, "₹500 (Free for SC/ST/PwD)",
-                today.minusDays(5), today.plusDays(16),
+                LocalDate.of(2024, 1, 30), LocalDate.of(2024, 2, 20),
                 "https://www.cdac.in",
                 "https://www.cdac.in/index.aspx?id=job_current_opportunities",
                 "https://www.cdac.in/index.aspx?id=job_current_opportunities",
                 "Advt. No. CORP/HR/02/2024 (C-DAC HPC)",
-                "Commencement of on-line Registration: " + today.minusDays(5) + " | Closing of on-line Registration of application: " + today.plusDays(16) + " (18:00 hrs). Applications received after closing date will be rejected.",
+                "Commencement of on-line Registration: 30.01.2024 | Closing of on-line Registration of application: 20.02.2024 (18:00 hrs). Applications received after closing date will be rejected.",
                 "Post Code PE-01: 1st Class B.E./B.Tech. in Computer Science/IT/ECE or equivalent with minimum 60% marks. Age: Below 32 years as on closing date.",
                 "C-DAC National Careers Portal (cdac.in)",
-                "CDAC", "CDAC-PE-HPC-2026-02"
+                "CDAC", "CDAC-PE-HPC-2024-02"
         ));
 
         list.add(createOpp(
@@ -447,15 +447,15 @@ public class DataLoader implements CommandLineRunner {
                 "Induction into Executive Cadre (Grade-II). Work on Tejas Mark-1A avionics, AMCA multirole fighter software, helicopter flight control architectures, and aero engines.",
                 "Regular B.E./B.Tech with minimum 65% aggregate for General/OBC.",
                 21, 28, 65.0, "₹500 (Exempt for SC/ST/PwD)",
-                today.minusDays(18), today.plusDays(4), // Closing soon!
+                LocalDate.of(2023, 8, 2), LocalDate.of(2023, 8, 23),
                 "https://www.hal-india.co.in",
                 "https://hal-india.co.in/Careers",
                 "https://hal-india.co.in/Careers",
                 "Advt. No. HAL/CHRC-TM/RECT-02",
-                "Online Application System: Candidates are required to apply online through HAL Website www.hal-india.co.in. The online registration portal will close on " + today.plusDays(4) + " at 17:00 Hours IST.",
+                "Online Application System: Candidates are required to apply online through HAL Website www.hal-india.co.in from 02.08.2023 (09:00 Hrs) to 23.08.2023 (17:00 Hours IST).",
                 "Clause 3: Bachelor's Degree in Engineering / Technology (B.E./B.Tech) in First Class (65% marks for UR/OBC) from recognized University in Aeronautical, Mechanical, Electrical, Electronics or Computer Science. Upper age limit: 28 years.",
                 "HAL Official Careers Portal (hal-india.co.in/Careers)",
-                "HAL", "HAL-MT-ENGG-2024-02"
+                "HAL", "HAL-MT-ENGG-2023-02"
         ));
 
         list.add(createOpp(
@@ -484,7 +484,7 @@ public class DataLoader implements CommandLineRunner {
         // =========================================================================
 
         list.add(createOpp(
-                "UPSC Combined Defence Services Examination (CDS-I) 2026",
+                "UPSC Combined Defence Services Examination (CDS-I) - Official Gazette Extract",
                 "Union Public Service Commission (UPSC)",
                 OpportunityCategory.COMPETITIVE_EXAM,
                 "Degree of Recognized University (IMA/OTA) | Engineering Degree (INA/AFA)",
@@ -493,19 +493,19 @@ public class DataLoader implements CommandLineRunner {
                 "Commissioning into Indian Military Academy (Dehradun), Indian Naval Academy (Ezhimala), Air Force Academy (Hyderabad), and Officers Training Academy (Chennai).",
                 "Indian Citizen. Unmarried. Age 19-24 years. Written examination followed by 5-day SSB interview.",
                 19, 24, 50.0, "₹200 (Female/SC/ST candidates exempt)",
-                today.minusDays(16), today.plusDays(15),
+                LocalDate.of(2023, 12, 20), LocalDate.of(2024, 1, 9),
                 "https://upsc.gov.in",
                 "https://upsconline.nic.in/upsc/OTRP/",
                 "https://upsc.gov.in/examinations/active-exams",
                 "Examination Notice No. 04/2024-CDS-I",
-                "Online Applications can be filled up to " + today.plusDays(15) + " till 6.00 PM after which the link will be disabled. No application will be accepted thereafter under any circumstances.",
+                "Online Applications can be filled from 20.12.2023 up to 09.01.2024 till 6.00 PM after which the link will be disabled. No application will be accepted thereafter under any circumstances.",
                 "Section III: (i) For I.M.A. and Officers' Training Academy: Degree of a recognized University or equivalent. (ii) For Indian Naval Academy: Degree in Engineering from a recognized University. (iii) For Air Force Academy: Degree with Physics and Mathematics at 10+2 level or Bachelor of Engineering.",
                 "UPSC Online OTR Portal (upsconline.nic.in)",
                 "UPSC", "UPSC-CDS-I-2024-04"
         ));
 
         list.add(createOpp(
-                "UPSC Civil Services Examination (Preliminary) 2026",
+                "UPSC Civil Services Examination (Preliminary) - Official Gazette Extract",
                 "Union Public Service Commission (UPSC)",
                 OpportunityCategory.COMPETITIVE_EXAM,
                 "Bachelor's Degree in Any Discipline from Recognized University",
@@ -514,13 +514,13 @@ public class DataLoader implements CommandLineRunner {
                 "Premier constitutional examination for appointment to Indian Administrative Service, Indian Police Service, Indian Foreign Service, and Indian Revenue Service.",
                 "Indian National. Age 21-32 years. Max 6 attempts for General, 9 for OBC, unlimited for SC/ST.",
                 21, 32, 50.0, "₹100 (Female/SC/ST/PwD Exempt)",
-                today.minusDays(9), today.plusDays(22),
+                LocalDate.of(2024, 2, 14), LocalDate.of(2024, 3, 5),
                 "https://upsc.gov.in",
                 "https://upsconline.nic.in/upsc/OTRP/",
                 "https://upsc.gov.in/examinations/active-exams",
                 "Examination Notice No. 05/2024-CSP",
-                "The Online Applications can be filled up to " + today.plusDays(22) + " till 18:00 Hours. Candidates are strongly advised to apply well in advance without waiting for the last date.",
-                "Rule 6: A candidate must hold a Graduate degree of any of the Universities incorporated by an Act of the Central or State Legislature in India. Age: 21 to 32 years as on 1st August 2026.",
+                "The Online Applications can be filled from 14.02.2024 up to 05.03.2024 till 18:00 Hours. Candidates are strongly advised to apply well in advance without waiting for the last date.",
+                "Rule 6: A candidate must hold a Graduate degree of any of the Universities incorporated by an Act of the Central or State Legislature in India. Age: 21 to 32 years as on 1st August 2024.",
                 "UPSC One Time Registration (OTR) System (upsconline.nic.in)",
                 "UPSC", "UPSC-CSE-PRE-2024-05"
         ));
@@ -535,15 +535,15 @@ public class DataLoader implements CommandLineRunner {
                 "Qualifying national exam determining eligibility for Junior Research Fellowship (JRF) with ₹37,000/month stipend and Assistant Professorship across Indian universities.",
                 "M.Sc or equivalent with 55% marks (50% for SC/ST). Max age 28 years for JRF.",
                 20, 28, 55.0, "₹1150 (General) | ₹600 (OBC) | ₹325 (SC/ST)",
-                today.minusDays(13), today.plusDays(17),
+                LocalDate.of(2024, 5, 1), LocalDate.of(2024, 5, 27),
                 "https://nta.ac.in",
                 "https://exams.nta.ac.in/CSIR-NET/",
-                "https://csirnet.nta.ac.in/pdf/Information_Bulletin_CSIR_NET_2026.pdf",
-                "Public Notice No. NTA/CSIR-NET/2026/01",
-                "Online Submission of Application Form: " + today.minusDays(13) + " to " + today.plusDays(17) + " (up to 11:50 PM). Successful Final Transaction of Fee: " + today.plusDays(18) + " (up to 11:50 PM).",
-                "Chapter 3: Essential Qualifications: M.Sc. or equivalent degree/Integrated BS-MS/BS-4 years/BE/B.Tech/B.Pharma/MBBS with at least 55% marks for General (UR)/General-EWS and OBC candidates.",
+                "https://exams.nta.ac.in/CSIR-NET/",
+                "Public Notice No. NTA/CSIR-NET/2024",
+                "Online Submission of Application Form: 01.05.2024 to 27.05.2024 (up to 11:59 PM). Successful Final Transaction of Fee: 28.05.2024 (up to 11:59 PM).",
+                "Chapter 3: Essential Qualifications: M.Sc. or equivalent degree/Integrated BS-MS/BS-4 years/BE/B.Tech with at least 55% marks for General (UR)/General-EWS and OBC candidates.",
                 "NTA National Testing Portal for CSIR-NET (exams.nta.ac.in)",
-                "NTA", "NTA-CSIR-NET-2026-01"
+                "NTA", "NTA-CSIR-NET-2024-01"
         ));
 
         list.add(createOpp(

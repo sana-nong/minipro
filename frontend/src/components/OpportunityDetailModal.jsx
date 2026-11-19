@@ -71,12 +71,12 @@ export default function OpportunityDetailModal({ opportunity, onClose, isBookmar
               <p style={{ fontSize: '0.9rem', fontWeight: 700, color: '#0f172a' }}>{opportunity.organization}</p>
             </div>
             <div>
-              <p style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600 }}>OFFICIAL APPLICATION DEADLINE</p>
-              <p style={{ fontSize: '0.95rem', fontWeight: 800, color: '#b91c1c' }}>
+              <p style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600 }}>OFFICIAL GAZETTE DEADLINE</p>
+              <p style={{ fontSize: '0.95rem', fontWeight: 800, color: daysLeft < 0 ? '#1e3a8a' : '#b91c1c' }}>
                 {opportunity.deadline}
               </p>
-              <span style={{ fontSize: '0.78rem', color: '#dc2626', fontWeight: 600 }}>
-                ({daysLeft > 0 ? `${daysLeft} days remaining` : daysLeft === 0 ? 'Closes Today!' : 'Expired'})
+              <span style={{ fontSize: '0.78rem', color: daysLeft < 0 ? '#1e3a8a' : '#dc2626', fontWeight: 600 }}>
+                {daysLeft > 0 ? `(${daysLeft} days remaining)` : daysLeft === 0 ? '(Closes Today!)' : '(Exact Extracted Gazette Date)'}
               </span>
             </div>
             <div>

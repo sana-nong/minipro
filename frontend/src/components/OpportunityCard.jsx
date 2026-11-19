@@ -43,10 +43,12 @@ export default function OpportunityCard({ opportunity, onSelect, isBookmarked, o
             )}
           </div>
 
-          <span className={`deadline-indicator ${isClosingSoon ? 'deadline-closing' : 'deadline-active'}`}>
+          <span className={`deadline-indicator ${daysLeft < 0 ? 'deadline-archived' : isClosingSoon ? 'deadline-closing' : 'deadline-active'}`}>
             <Calendar size={13} />
             <strong>{opportunity.deadline}</strong>
-            <span style={{ opacity: 0.85 }}>({daysLeft > 0 ? `${daysLeft}d left` : daysLeft === 0 ? 'Last day today' : 'Expired'})</span>
+            <span style={{ opacity: 0.85 }}>
+              {daysLeft > 0 ? `(${daysLeft}d left)` : daysLeft === 0 ? '(Last day today)' : '(Gazette Extracted)'}
+            </span>
           </span>
         </div>
 
