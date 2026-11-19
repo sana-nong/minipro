@@ -61,6 +61,32 @@ public class Opportunity {
     @Column(nullable = false, length = 1000)
     private String officialUrl;
 
+    // Direct online registration / apply portal link (e.g. upsconline.nic.in)
+    @Column(length = 1000)
+    private String directApplyUrl;
+
+    // Direct link to the official notification document / PDF / gazette
+    @Column(length = 1000)
+    private String notificationPdfUrl;
+
+    // Official advertisement notice reference number (e.g. Advt. No. 04/2025-CDS-I)
+    @Column(length = 200)
+    private String notificationReference;
+
+    // Raw verbatim deadline clause extracted from the official notification
+    @Column(columnDefinition = "TEXT", length = 2000)
+    private String extractedDateSnippet;
+
+    // Raw verbatim statutory eligibility clause extracted from the official notice
+    @Column(columnDefinition = "TEXT", length = 2000)
+    private String extractedEligibilitySnippet;
+
+    // Specific portal or platform name (e.g. "UPSC OTR Portal (upsconline.nic.in)")
+    @Column(length = 250)
+    private String portalName;
+
+    private Boolean newlySynced = false;
+
     @Column(nullable = false, length = 100)
     private String sourceAgency;
 
@@ -244,6 +270,62 @@ public class Opportunity {
 
     public void setOfficialUrl(String officialUrl) {
         this.officialUrl = officialUrl;
+    }
+
+    public String getDirectApplyUrl() {
+        return directApplyUrl != null && !directApplyUrl.isEmpty() ? directApplyUrl : officialUrl;
+    }
+
+    public void setDirectApplyUrl(String directApplyUrl) {
+        this.directApplyUrl = directApplyUrl;
+    }
+
+    public String getNotificationPdfUrl() {
+        return notificationPdfUrl;
+    }
+
+    public void setNotificationPdfUrl(String notificationPdfUrl) {
+        this.notificationPdfUrl = notificationPdfUrl;
+    }
+
+    public String getNotificationReference() {
+        return notificationReference;
+    }
+
+    public void setNotificationReference(String notificationReference) {
+        this.notificationReference = notificationReference;
+    }
+
+    public String getExtractedDateSnippet() {
+        return extractedDateSnippet;
+    }
+
+    public void setExtractedDateSnippet(String extractedDateSnippet) {
+        this.extractedDateSnippet = extractedDateSnippet;
+    }
+
+    public String getExtractedEligibilitySnippet() {
+        return extractedEligibilitySnippet;
+    }
+
+    public void setExtractedEligibilitySnippet(String extractedEligibilitySnippet) {
+        this.extractedEligibilitySnippet = extractedEligibilitySnippet;
+    }
+
+    public String getPortalName() {
+        return portalName;
+    }
+
+    public void setPortalName(String portalName) {
+        this.portalName = portalName;
+    }
+
+    public Boolean getNewlySynced() {
+        return newlySynced;
+    }
+
+    public void setNewlySynced(Boolean newlySynced) {
+        this.newlySynced = newlySynced;
     }
 
     public String getSourceAgency() {

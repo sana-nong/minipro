@@ -13,6 +13,17 @@ public class StatsSummaryDto {
 
     public StatsSummaryDto() {}
 
+    public StatsSummaryDto(long totalOpportunities, long activeCount, long closingSoonCount, long expiredCount,
+                           long totalSourcesMonitored, Map<String, Long> categoryBreakdown, Map<String, Long> statusBreakdown) {
+        this.totalOpportunities = totalOpportunities;
+        this.activeCount = activeCount;
+        this.closingSoonCount = closingSoonCount;
+        this.expiredCount = expiredCount;
+        this.totalSourcesMonitored = totalSourcesMonitored;
+        this.categoryBreakdown = categoryBreakdown;
+        this.statusBreakdown = statusBreakdown;
+    }
+
     public long getTotalOpportunities() {
         return totalOpportunities;
     }

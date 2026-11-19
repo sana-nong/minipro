@@ -1,5 +1,5 @@
 import React from 'react';
-import { Building2, Calendar, MapPin, GraduationCap, ExternalLink, Bookmark, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Building2, Calendar, MapPin, GraduationCap, ExternalLink, Bookmark, FileText, CheckCircle2, Sparkles, Send } from 'lucide-react';
 
 export default function OpportunityCard({ opportunity, onSelect, isBookmarked, onToggleBookmark }) {
   const getCategoryClass = (cat) => {
@@ -28,16 +28,25 @@ export default function OpportunityCard({ opportunity, onSelect, isBookmarked, o
   const isClosingSoon = opportunity.status === 'CLOSING_SOON' || (daysLeft <= 7 && daysLeft >= 0);
 
   return (
-    <div className="opp-card">
+    <div className={`opp-card ${opportunity.newlySynced ? 'newly-synced-card' : ''}`}>
       <div>
         <div className="opp-card-header">
-          <span className={`category-tag ${getCategoryClass(opportunity.category)}`}>
-            {getCategoryLabel(opportunity.category)}
-          </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
+            <span className={`category-tag ${getCategoryClass(opportunity.category)}`}>
+              {getCategoryLabel(opportunity.category)}
+            </span>
+            {opportunity.newlySynced && (
+              <span className="newly-synced-pill" title="Freshly extracted in latest aggregation sync">
+                <Sparkles size={11} />
+                <span>Newly Synced</span>
+              </span>
+            )}
+          </div>
 
           <span className={`deadline-indicator ${isClosingSoon ? 'deadline-closing' : 'deadline-active'}`}>
             <Calendar size={13} />
-            {daysLeft > 0 ? `${daysLeft} days left` : daysLeft === 0 ? 'Last day today' : 'Expired'}
+            <strong>{opportunity.deadline}</strong>
+            <span style={{ opacity: 0.85 }}>({daysLeft > 0 ? `${daysLeft}d left` : daysLeft === 0 ? 'Last day today' : 'Expired'})</span>
           </span>
         </div>
 
@@ -46,9 +55,25 @@ export default function OpportunityCard({ opportunity, onSelect, isBookmarked, o
           <span>{opportunity.organization}</span>
         </div>
 
-        <h2 className="opp-title">{opportunity.title}</h2>
+        <h2 className="opp-title" onClick={() => onSelect(opportunity)} style={{ cursor: 'pointer' }}>
+          {opportunity.title}
+        </h2>
 
-        <p className="opp-desc">{opportunity.description}</p>
+        {/* Gazette / Advertisement Reference Badge */}
+        {opportunity.notificationReference && (
+          <div className="notice-ref-badge">
+            <FileText size={13} color="#2563eb" />
+            <span>Official Gazette Ref: <strong>{opportunity.notificationReference}</strong></span>
+          </div>
+        )}
+
+        {/* Extracted Deadline Clause Quote Box */}
+        {opportunity.extractedDateSnippet && (
+          <div className="extracted-clause-box">
+            <span className="extracted-clause-label">Extracted Deadline Clause:</span>
+            <p className="extracted-clause-text">"{opportunity.extractedDateSnippet}"</p>
+          </div>
+        )}
 
         <div className="opp-metadata-chips">
           <span className="meta-chip">
@@ -70,6 +95,14 @@ export default function OpportunityCard({ opportunity, onSelect, isBookmarked, o
             </span>
           )}
         </div>
+
+        {/* Direct Portal Indicator */}
+        <div className="portal-indicator-strip">
+          <span style={{ fontSize: '0.75rem', color: '#64748b' }}>Direct Apply Portal:</span>
+          <strong style={{ fontSize: '0.78rem', color: '#1e3a8a' }}>
+            {opportunity.portalName || (opportunity.sourceAgency + ' Portal')}
+          </strong>
+        </div>
       </div>
 
       <div className="opp-footer">
@@ -80,7 +113,32 @@ export default function OpportunityCard({ opportunity, onSelect, isBookmarked, o
           Check Eligibility & Details
         </button>
 
-        <div style={{ display: 'flex', gap: '0.4rem' }}>
+        <div style={{ display: 'flex', gap: '0.4rem', alignItems: 'center' }}>
+          {/* Direct Apply Button */}
+          <a
+            href={opportunity.directApplyUrl || opportunity.officialUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="opp-apply-btn"
+            title={`Apply directly on official portal: ${opportunity.portalName || opportunity.directApplyUrl}`}
+          >
+            <Send size={13} />
+            <span>Direct Apply</span>
+          </a>
+
+          {/* Official PDF / Circular Link */}
+          {opportunity.notificationPdfUrl && (
+            <a
+              href={opportunity.notificationPdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="opp-icon-btn pdf-btn"
+              title="Open Official Gazette Notification (PDF)"
+            >
+              <FileText size={16} />
+            </a>
+          )}
+
           <button
             className={`opp-icon-btn ${isBookmarked ? 'active' : ''}`}
             onClick={() => onToggleBookmark(opportunity)}
@@ -88,16 +146,6 @@ export default function OpportunityCard({ opportunity, onSelect, isBookmarked, o
           >
             <Bookmark size={16} fill={isBookmarked ? 'currentColor' : 'none'} />
           </button>
-
-          <a
-            href={opportunity.officialUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="opp-icon-btn"
-            title="Open official portal notification"
-          >
-            <ExternalLink size={16} />
-          </a>
         </div>
       </div>
     </div>

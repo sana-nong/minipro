@@ -12,6 +12,7 @@ public class OpportunityFilterDto {
     private Integer closingInDays;
     private Integer maxAge;
     private Double userPercentage;
+    private Boolean newlySynced;
     private String sortBy = "deadline"; // "deadline", "createdAt", "title"
     private String sortDirection = "ASC"; // "ASC", "DESC"
 
@@ -80,6 +81,14 @@ public class OpportunityFilterDto {
 
     public void setUserPercentage(Double userPercentage) {
         this.userPercentage = userPercentage;
+    }
+
+    public Boolean getNewlySynced() {
+        return newlySynced;
+    }
+
+    public void setNewlySynced(Boolean newlySynced) {
+        this.newlySynced = newlySynced;
     }
 
     public String getSortBy() {
