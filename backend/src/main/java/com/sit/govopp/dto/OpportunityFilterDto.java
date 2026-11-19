@@ -13,6 +13,7 @@ public class OpportunityFilterDto {
     private Integer maxAge;
     private Double userPercentage;
     private Boolean newlySynced;
+    private Boolean liveOnly;
     private String sortBy = "deadline"; // "deadline", "createdAt", "title"
     private String sortDirection = "ASC"; // "ASC", "DESC"
 
@@ -89,6 +90,14 @@ public class OpportunityFilterDto {
 
     public void setNewlySynced(Boolean newlySynced) {
         this.newlySynced = newlySynced;
+    }
+
+    public Boolean getLiveOnly() {
+        return liveOnly;
+    }
+
+    public void setLiveOnly(Boolean liveOnly) {
+        this.liveOnly = liveOnly;
     }
 
     public String getSortBy() {

@@ -15,15 +15,20 @@ export default function FilterBar({ filters, setFilters, onReset }) {
     setFilters(prev => ({ ...prev, [field]: val }));
   };
 
+  const handleTabClick = (statusVal, liveVal = false) => {
+    setFilters(prev => ({ ...prev, status: statusVal, liveOnly: liveVal }));
+  };
+
   const currentStatus = filters.status || 'ACTIVE';
+  const isLiveOnly = Boolean(filters.liveOnly);
 
   return (
     <div className="filter-container">
       {/* Top-Level 1-Click View Mode Tabs (Two-Tier Architecture) */}
       <div className="view-mode-tabs">
         <button
-          className={`view-mode-tab ${currentStatus === 'ACTIVE' ? 'active active-live' : ''}`}
-          onClick={() => handleChange('status', 'ACTIVE')}
+          className={`view-mode-tab ${!isLiveOnly && currentStatus === 'ACTIVE' ? 'active active-live' : ''}`}
+          onClick={() => handleTabClick('ACTIVE', false)}
           type="button"
         >
           <span className="indicator-dot live-dot"></span>
@@ -32,8 +37,19 @@ export default function FilterBar({ filters, setFilters, onReset }) {
         </button>
 
         <button
-          className={`view-mode-tab ${currentStatus === 'CLOSING_SOON' ? 'active active-urgent' : ''}`}
-          onClick={() => handleChange('status', 'CLOSING_SOON')}
+          className={`view-mode-tab ${isLiveOnly ? 'active active-live' : ''}`}
+          onClick={() => handleTabClick('ALL', true)}
+          type="button"
+          style={isLiveOnly ? { borderBottom: '3px solid #16a34a', color: '#15803d', fontWeight: 800 } : {}}
+        >
+          <span className="indicator-dot live-dot" style={{ background: '#16a34a' }}></span>
+          <span>🌐 Live Scraped Portals</span>
+          <span className="view-mode-badge" style={{ background: '#dcfce7', color: '#15803d', fontWeight: 700 }}>Direct Govt</span>
+        </button>
+
+        <button
+          className={`view-mode-tab ${!isLiveOnly && currentStatus === 'CLOSING_SOON' ? 'active active-urgent' : ''}`}
+          onClick={() => handleTabClick('CLOSING_SOON', false)}
           type="button"
         >
           <span className="indicator-dot urgent-dot"></span>
@@ -42,8 +58,8 @@ export default function FilterBar({ filters, setFilters, onReset }) {
         </button>
 
         <button
-          className={`view-mode-tab ${currentStatus === 'EXPIRED' ? 'active active-gazette' : ''}`}
-          onClick={() => handleChange('status', 'EXPIRED')}
+          className={`view-mode-tab ${!isLiveOnly && currentStatus === 'EXPIRED' ? 'active active-gazette' : ''}`}
+          onClick={() => handleTabClick('EXPIRED', false)}
           type="button"
         >
           <span className="indicator-dot gazette-dot"></span>
@@ -52,8 +68,8 @@ export default function FilterBar({ filters, setFilters, onReset }) {
         </button>
 
         <button
-          className={`view-mode-tab ${currentStatus === 'ALL' ? 'active' : ''}`}
-          onClick={() => handleChange('status', 'ALL')}
+          className={`view-mode-tab ${!isLiveOnly && currentStatus === 'ALL' ? 'active' : ''}`}
+          onClick={() => handleTabClick('ALL', false)}
           type="button"
         >
           <span>All Monitored</span>
@@ -62,7 +78,16 @@ export default function FilterBar({ filters, setFilters, onReset }) {
       </div>
 
       {/* Dynamic View Mode Context Banner */}
-      {currentStatus === 'ACTIVE' && (
+      {isLiveOnly && (
+        <div className="mode-description-banner" style={{ background: '#f0fdf4', border: '1px solid #86efac', color: '#166534' }}>
+          <ShieldCheck size={16} color="#16a34a" />
+          <span>
+            <strong>🌐 Live Scraped Government Portals:</strong> Displaying notices dynamically ingested in real-time from official government endpoints (ISRO Headquarters, Karnataka KPSC, CSIR India, Bharat Electronics, DRDO RAC, Employment News). Each card links directly to the genuine government circular or PDF.
+          </span>
+        </div>
+      )}
+
+      {!isLiveOnly && currentStatus === 'ACTIVE' && (
         <div className="mode-description-banner banner-live">
           <ShieldCheck size={16} />
           <span>
@@ -180,6 +205,7 @@ export default function FilterBar({ filters, setFilters, onReset }) {
           value={filters.sortBy || 'deadline'}
           onChange={(e) => handleChange('sortBy', e.target.value)}
         >
+          <option value="liveFirst">Sort: 🌐 Live Scraped First</option>
           <option value="deadline">Sort: Deadline (Nearest First)</option>
           <option value="createdAt">Sort: Recently Added</option>
           <option value="title">Sort: Title (A-Z)</option>

@@ -11,6 +11,7 @@ export async function fetchOpportunities(filters = {}) {
   if (filters.maxAge) params.append('maxAge', filters.maxAge);
   if (filters.userPercentage) params.append('userPercentage', filters.userPercentage);
   if (filters.newlySynced) params.append('newlySynced', 'true');
+  if (filters.liveOnly) params.append('liveOnly', 'true');
   if (filters.sortBy) params.append('sortBy', filters.sortBy);
   if (filters.sortDirection) params.append('sortDirection', filters.sortDirection);
 

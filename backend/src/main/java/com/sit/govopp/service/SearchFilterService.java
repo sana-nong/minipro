@@ -88,6 +88,13 @@ public class SearchFilterService {
                 predicates.add(cb.equal(root.get("newlySynced"), true));
             }
 
+            if (filter.getLiveOnly() != null && filter.getLiveOnly()) {
+                predicates.add(cb.or(
+                        cb.equal(root.get("isLiveScraped"), true),
+                        cb.like(root.get("uniqueSourceId"), "%LIVE%")
+                ));
+            }
+
             if (filter.getQualification() != null && !filter.getQualification().trim().isEmpty()
                     && !"ALL".equalsIgnoreCase(filter.getQualification())) {
                 predicates.add(cb.like(cb.lower(root.get("qualification")), "%" + filter.getQualification().trim().toLowerCase() + "%"));
@@ -127,7 +134,9 @@ public class SearchFilterService {
                 ? Sort.Direction.DESC
                 : Sort.Direction.ASC;
 
-        if ("deadline".equalsIgnoreCase(sortBy)) {
+        if ("live".equalsIgnoreCase(sortBy) || "liveFirst".equalsIgnoreCase(sortBy)) {
+            return Sort.by(Sort.Direction.DESC, "isLiveScraped").and(Sort.by(direction, "deadline"));
+        } else if ("deadline".equalsIgnoreCase(sortBy)) {
             return Sort.by(direction, "deadline");
         } else if ("createdAt".equalsIgnoreCase(sortBy)) {
             return Sort.by(Sort.Direction.DESC, "createdAt");
@@ -150,6 +159,7 @@ public class SearchFilterService {
         long closingSoon = all.stream().filter(o -> o.getStatus() == OpportunityStatus.CLOSING_SOON).count();
         long expired = all.stream().filter(o -> o.getStatus() == OpportunityStatus.EXPIRED).count();
         long totalSources = sourceRepository.count();
+        long liveScraped = all.stream().filter(o -> Boolean.TRUE.equals(o.getIsLiveScraped()) || (o.getUniqueSourceId() != null && o.getUniqueSourceId().contains("LIVE"))).count();
 
         Map<String, Long> categoryMap = new HashMap<>();
         for (OpportunityCategory cat : OpportunityCategory.values()) {
@@ -162,7 +172,7 @@ public class SearchFilterService {
         statusMap.put("CLOSING_SOON", closingSoon);
         statusMap.put("EXPIRED", expired);
 
-        return new StatsSummaryDto(total, active, closingSoon, expired, totalSources, categoryMap, statusMap);
+        return new StatsSummaryDto(total, active, closingSoon, expired, totalSources, liveScraped, categoryMap, statusMap);
     }
 
     /**

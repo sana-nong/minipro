@@ -27,9 +27,26 @@ export default function OpportunityCard({ opportunity, onSelect, isBookmarked, o
   const daysLeft = opportunity.daysRemaining ?? 0;
   const isClosingSoon = opportunity.status === 'CLOSING_SOON' || (daysLeft <= 7 && daysLeft >= 0);
 
+  const isLiveScraped = opportunity.isLiveScraped || opportunity.uniqueSourceId?.includes('LIVE');
+
   return (
-    <div className={`opp-card ${opportunity.newlySynced ? 'newly-synced-card' : ''}`}>
+    <div className={`opp-card ${isLiveScraped ? 'live-scraped-card' : ''} ${opportunity.newlySynced ? 'newly-synced-card' : ''}`}>
       <div>
+        {/* Prominent Live Extraction Banner if Scraped from Official Govt Server */}
+        {isLiveScraped && (
+          <div className="live-scraped-banner-strip">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+              <span className="live-radar-dot"></span>
+              <span style={{ fontSize: '0.74rem', fontWeight: 800, color: '#166534' }}>
+                🌐 Live Scraped from {opportunity.sourceAgency} Server
+              </span>
+            </div>
+            <span style={{ fontSize: '0.68rem', color: '#15803d', background: '#dcfce7', padding: '0.1rem 0.4rem', borderRadius: '4px', fontWeight: 700 }}>
+              Live Ingestion
+            </span>
+          </div>
+        )}
+
         <div className="opp-card-header">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
             <span className={`category-tag ${getCategoryClass(opportunity.category)}`}>

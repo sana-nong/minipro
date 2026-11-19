@@ -42,6 +42,7 @@ public class OpportunityController {
             @RequestParam(required = false) Integer closingInDays,
             @RequestParam(required = false) Integer maxAge,
             @RequestParam(required = false) Double userPercentage,
+            @RequestParam(required = false) Boolean liveOnly,
             @RequestParam(defaultValue = "deadline") String sortBy,
             @RequestParam(defaultValue = "ASC") String sortDirection) {
 
@@ -50,6 +51,7 @@ public class OpportunityController {
         filter.setCategory(category);
         filter.setQualification(qualification);
         filter.setLocation(location);
+        filter.setLiveOnly(liveOnly);
         if (status != null && !status.trim().isEmpty() && !"ALL".equalsIgnoreCase(status)) {
             try {
                 filter.setStatus(OpportunityStatus.valueOf(status.trim().toUpperCase()));

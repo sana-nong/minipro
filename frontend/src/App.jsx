@@ -29,7 +29,8 @@ export default function App() {
     location: 'ALL',
     status: searchParams.get('status') || 'ACTIVE',
     closingInDays: '',
-    sortBy: 'deadline',
+    sortBy: 'liveFirst',
+    liveOnly: false,
     newlySynced: false
   });
 

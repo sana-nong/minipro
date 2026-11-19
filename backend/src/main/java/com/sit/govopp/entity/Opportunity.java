@@ -87,6 +87,9 @@ public class Opportunity {
 
     private Boolean newlySynced = false;
 
+    @Column(nullable = false)
+    private Boolean isLiveScraped = false;
+
     @Column(nullable = false, length = 100)
     private String sourceAgency;
 
@@ -100,12 +103,18 @@ public class Opportunity {
     public void prePersist() {
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
+        if (uniqueSourceId != null && uniqueSourceId.contains("LIVE")) {
+            this.isLiveScraped = true;
+        }
         refreshStatus();
     }
 
     @PreUpdate
     public void preUpdate() {
         this.updatedAt = LocalDateTime.now();
+        if (uniqueSourceId != null && uniqueSourceId.contains("LIVE")) {
+            this.isLiveScraped = true;
+        }
         refreshStatus();
     }
 
@@ -326,6 +335,14 @@ public class Opportunity {
 
     public void setNewlySynced(Boolean newlySynced) {
         this.newlySynced = newlySynced;
+    }
+
+    public Boolean getIsLiveScraped() {
+        return Boolean.TRUE.equals(isLiveScraped) || (uniqueSourceId != null && uniqueSourceId.contains("LIVE"));
+    }
+
+    public void setIsLiveScraped(Boolean isLiveScraped) {
+        this.isLiveScraped = isLiveScraped;
     }
 
     public String getSourceAgency() {
