@@ -282,12 +282,12 @@ public class DataLoader implements CommandLineRunner {
                 today.minusDays(12), today.plusDays(24),
                 "https://rac.gov.in",
                 "https://rac.gov.in/index.php?lang=en&id=0",
-                "https://rac.gov.in/download/advt_147_drdo_scb.pdf",
-                "Advt. No. 147/RAC/2026/DRDO",
-                "Last Date for online submission of application form on RAC website: 21 days from the date of publication in Employment News (Closing Date: " + today.plusDays(24) + " 17:00 Hrs IST). No offline application will be entertained.",
-                "Section III: (i) At least First Class Bachelor's Degree in Engineering or Technology in Electronics / Computer Science from a recognized University. (ii) Valid GATE score in the respective discipline. Upper age limit: 28 years for Unreserved.",
+                "https://rac.gov.in/index.php?lang=en&id=0",
+                "Advt. No. 145/RAC (DRDO Scientist 'B')",
+                "Closing Date for submission of online application on RAC website is 21 days from the date of publication in Employment News at 17:00 Hrs IST (" + today.plusDays(24) + "). Online registration at https://rac.gov.in.",
+                "Section III Item 1: At least First Class Bachelor's Degree in Engineering or Technology in Electronics / Computer Science from a recognized University. Valid GATE score in respective paper code.",
                 "DRDO RAC Online Recruitment Portal (rac.gov.in)",
-                "DRDO", "DRDO-SCB-CSE-2026-147"
+                "DRDO", "DRDO-SCB-CSE-2026-145"
         ));
 
         list.add(createOpp(
@@ -303,10 +303,10 @@ public class DataLoader implements CommandLineRunner {
                 today.minusDays(10), today.plusDays(18),
                 "https://www.isro.gov.in",
                 "https://apps.isac.gov.in/",
-                "https://www.isro.gov.in/media_isro/pdf/recruitmentNotice/2026_ICRB_Advt.pdf",
-                "Advt. No. ICRB:03(SC):2026",
-                "Opening Date for Online Registration: " + today.minusDays(10) + " (10:00 AM) | Last Date for submission of Online Application: " + today.plusDays(18) + " (23:59 PM IST). Payment portal closes 24 hours post registration.",
-                "Para 2.1: BE/B.Tech or equivalent in First Class with an aggregate minimum of 65% marks (average of all semesters) or 6.84/10 CGPA. Age Limit: 28 years as on closing date. Candidates awaiting final results are not eligible.",
+                "https://www.isro.gov.in/CurrentOpportunities.html",
+                "Advt. No. ISRO:ICRB:03(EMC):2026",
+                "Opening Date for Online Registration: 10:00 AM | Last Date for submission of Online Application: " + today.plusDays(18) + " (23:59 PM IST). Payment portal closes 24 hours post registration.",
+                "Para 2.1: BE/B.Tech or equivalent in First Class with an aggregate minimum of 65% marks (average of all semesters) or 6.84/10 CGPA. Age Limit: 28 years as on closing date.",
                 "ISRO Centralised Recruitment Board Portal (apps.isac.gov.in)",
                 "ISRO", "ISRO-SC-ENGG-2026-03"
         ));
@@ -323,12 +323,12 @@ public class DataLoader implements CommandLineRunner {
                 20, 26, 60.0, "₹500 (Women/SC/ST/PwD Exempt)",
                 today.minusDays(15), today.plusDays(14),
                 "https://barc.gov.in",
-                "https://barcoces.examdata.co.in/",
-                "https://barcoces.examdata.co.in/pdf/BARC_OCES_2026_Information_Brochure.pdf",
-                "Advt. No. 01/2026/BARC-OCES",
-                "Important Dates: Online Application Window: " + today.minusDays(15) + " to " + today.plusDays(14) + " (23:59 Hrs). Online Examination Booking Window: 7 days post closure.",
-                "Clause 4.2: Qualifying Degree: B.E./B.Tech./B.Sc. (Engineering) with a minimum of 60% aggregate marks in eligible discipline. Age: Born on or after August 1, 2000 (Max 26 years). Nationality: Must be a citizen of India.",
-                "BARC OCES/DGFS Online Application System (barcoces.examdata.co.in)",
+                "https://www.barcocesexam.in/",
+                "https://www.barcocesexam.in/",
+                "BARC OCES/DGFS-2026 Information Brochure",
+                "Important Dates: Online Application Window operational on web portal until " + today.plusDays(14) + " (23:59 Hrs). Online Examination slot booking window commences post closure.",
+                "Clause 4.2: Qualifying Degree: B.E./B.Tech./B.Sc. (Engineering) with a minimum of 60% aggregate marks in eligible discipline. Age: Born on or after August 1, 2000 (Max 26 years).",
+                "BARC OCES/DGFS Online Application System (barcocesexam.in)",
                 "BARC", "BARC-OCES-DGFS-2026-01"
         ));
 
@@ -343,14 +343,14 @@ public class DataLoader implements CommandLineRunner {
                 "Engineering Degree or MCA with 60% aggregate. Written Examination + Technical Interview.",
                 21, 30, 60.0, "₹800 (General) | Nil for SC/ST/Women",
                 today.minusDays(8), today.plusDays(5), // Closing soon!
-                "https://www.nic.in",
-                "https://www.calicut.nielit.in/nic/",
-                "https://www.calicut.nielit.in/nic/pdf/NIC_ScientistB_Detailed_Notice_2026.pdf",
-                "Advt. No. NIELIT/NIC/2026/02",
-                "Submission of online application starts on: " + today.minusDays(8) + " (10:00 AM) and closes on: " + today.plusDays(5) + " (5:30 PM). No extension of closing date will be granted under any circumstances.",
-                "Section 2: Essential Qualification: Bachelor degree in Engineering OR Bachelor in Technology OR Department of Electronics and Accreditation of Computer Courses (DOEACC) 'B' level OR Associate Member of Institute of Engineers (AMIE).",
-                "NIELIT Calicut Portal for NIC Recruitments (calicut.nielit.in/nic)",
-                "NIC", "NIC-SCB-MEITY-2026-02"
+                "https://recruitment.nic.in/",
+                "https://recruitment.nic.in/",
+                "https://recruitment.nic.in/",
+                "Advt. No. NIC/SCB/2026/1",
+                "Submission of online application through official NIC recruitment portal https://recruitment.nic.in closes on " + today.plusDays(5) + " (17:30 PM). No physical or offline applications are accepted.",
+                "Section 2: Essential Qualification: Bachelor degree in Engineering OR Bachelor in Technology in Computer Science, Computer Engineering, IT, or Electronics. Upper age limit: 30 years as on crucial date.",
+                "National Informatics Centre Recruitment Portal (recruitment.nic.in)",
+                "NIC", "NIC-SCB-MEITY-2026-01"
         ));
 
         list.add(createOpp(
@@ -366,10 +366,10 @@ public class DataLoader implements CommandLineRunner {
                 today.minusDays(14), today.plusDays(6), // Closing soon!
                 "https://bel-india.in",
                 "https://bel-india.in/CareersGrid.aspx?MId=29&LId=1&subjectid=3",
-                "https://bel-india.in/pdf/BEL_PE_Bangalore_Detailed_Notice_2026.pdf",
-                "Advt. No. BEL/BG/PE/2026/01",
-                "Last date for receipt of online applications: " + today.plusDays(6) + " up to 23:59 Hrs. The link for online registration will be deactivated automatically thereafter.",
-                "Eligibility: First Class in B.E./B.Tech from AICTE approved college in specified disciplines (Electronics, CS, Mechanical). Upper age limit 26 years as of 01-11-2026.",
+                "https://bel-india.in/CareersGrid.aspx?MId=29&LId=1&subjectid=3",
+                "Advt. No. 383/HR/PE/2024-25 (BEL Bangalore)",
+                "Last date for receipt of online applications: " + today.plusDays(6) + " up to 23:59 Hrs. The link for online registration will be deactivated automatically on bel-india.in thereafter.",
+                "Eligibility: First Class in B.E./B.Tech from AICTE approved college in specified disciplines (Electronics, CS, Mechanical). Upper age limit 26 years as of cutoff date.",
                 "BEL Official Careers Portal (bel-india.in/CareersGrid.aspx)",
                 "BEL", "BEL-PE-BLR-2026-01"
         ));
@@ -387,8 +387,8 @@ public class DataLoader implements CommandLineRunner {
                 today.minusDays(20), today.plusDays(21),
                 "https://ssc.gov.in",
                 "https://ssc.gov.in/candidate-portal/one-time-registration/home",
-                "https://ssc.gov.in/api/notices/CGL_2026_Notice_English.pdf",
-                "Notice No. HQ-C11019/12/2026-CGL",
+                "https://ssc.gov.in/for-candidates/tentative-calendar",
+                "Notice No. HQ-C11019/12/2024-CGL",
                 "Dates for submission of online applications: " + today.minusDays(20) + " to " + today.plusDays(21) + " (23:00 Hrs). Last date and time for making online fee payment: " + today.plusDays(22) + " (23:00 Hrs).",
                 "Para 8.1: Minimum Educational Qualification: Bachelor's Degree from a recognized University or equivalent. Candidates appearing in final year may also apply provisionally. Age: 18-30/32 years.",
                 "Staff Selection Commission OTR Portal (ssc.gov.in)",
@@ -408,9 +408,9 @@ public class DataLoader implements CommandLineRunner {
                 today.minusDays(6), today.plusDays(28),
                 "https://www.rrbcdg.gov.in",
                 "https://www.rrbapply.gov.in/",
-                "https://rrbcdg.gov.in/cen_03_2026_je_notification.pdf",
-                "CEN No. 03/2026 (RRB-JE)",
-                "Opening date of application: " + today.minusDays(6) + " (00:00 Hrs) | Closing date for submission of application: " + today.plusDays(28) + " (23:59 Hrs). Modifications window available for 10 days post closure.",
+                "https://www.rrbapply.gov.in/",
+                "CEN No. 03/2024 (RRB-JE)",
+                "Opening date of application: " + today.minusDays(6) + " (00:00 Hrs) | Closing date for submission of application: " + today.plusDays(28) + " (23:59 Hrs). Apply online at www.rrbapply.gov.in.",
                 "Clause 5.0: Educational Qualifications: P.G.D.C.A./B.Sc. (Computer Science)/BCA/DOEACC 'B' Level course or B.E./B.Tech. in Computer Science/IT from recognized institution.",
                 "Indian Railways Centralized Recruitment Portal (rrbapply.gov.in)",
                 "RRB", "RRB-JE-IT-2026-CEN03"
@@ -429,8 +429,8 @@ public class DataLoader implements CommandLineRunner {
                 today.minusDays(5), today.plusDays(16),
                 "https://www.cdac.in",
                 "https://www.cdac.in/index.aspx?id=job_current_opportunities",
-                "https://www.cdac.in/pdf/CDAC_Corp_Advt_PE_2026.pdf",
-                "Advt. No. CORP/HR/02/2026",
+                "https://www.cdac.in/index.aspx?id=job_current_opportunities",
+                "Advt. No. CORP/HR/02/2024 (C-DAC HPC)",
                 "Commencement of on-line Registration: " + today.minusDays(5) + " | Closing of on-line Registration of application: " + today.plusDays(16) + " (18:00 hrs). Applications received after closing date will be rejected.",
                 "Post Code PE-01: 1st Class B.E./B.Tech. in Computer Science/IT/ECE or equivalent with minimum 60% marks. Age: Below 32 years as on closing date.",
                 "C-DAC National Careers Portal (cdac.in)",
@@ -448,14 +448,14 @@ public class DataLoader implements CommandLineRunner {
                 "Regular B.E./B.Tech with minimum 65% aggregate for General/OBC.",
                 21, 28, 65.0, "₹500 (Exempt for SC/ST/PwD)",
                 today.minusDays(18), today.plusDays(4), // Closing soon!
-                "https://hal-india.co.in",
-                "https://hal-india.co.in/Career_Docs/",
-                "https://hal-india.co.in/Career_Docs/HAL_MT_Tech_2026_Advt.pdf",
-                "Advt. No. HAL/HR/2026/04-MT",
-                "Online Application System is open from " + today.minusDays(18) + " (15:00 hrs) to " + today.plusDays(4) + " (17:00 hrs). Candidates are advised to submit applications well in advance.",
-                "Para 3: Bachelor's Degree in Engineering / Technology or its equivalent with not less than 65% marks in the aggregate. Upper age limit: 28 years as on cutoff date.",
-                "HAL Careers Direct Portal (hal-india.co.in)",
-                "HAL", "HAL-MT-ENGG-2026-04"
+                "https://www.hal-india.co.in",
+                "https://www.hal-india.co.in/Careers",
+                "https://www.hal-india.co.in/Careers",
+                "Advt. No. HAL/CHRC-TM/RECT-02/2026",
+                "Online Application System: Candidates are required to apply online through HAL Website www.hal-india.co.in. The online registration portal will close on " + today.plusDays(4) + " at 17:00 Hours IST.",
+                "Clause 3: Bachelor's Degree in Engineering / Technology (B.E./B.Tech) in First Class (65% marks for UR/OBC) from recognized University in Aeronautical, Mechanical, Electrical, Electronics or Computer Science. Upper age limit: 28 years.",
+                "HAL Official Careers Portal (hal-india.co.in/Careers)",
+                "HAL", "HAL-MT-ENGG-2026-02"
         ));
 
         list.add(createOpp(

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, ExternalLink, Calendar, MapPin, GraduationCap, Building2, CheckCircle2, XCircle, HelpCircle, Bookmark, FileText, Send, ShieldCheck, Sparkles } from 'lucide-react';
+import { X, ExternalLink, Calendar, MapPin, GraduationCap, Building2, CheckCircle2, XCircle, HelpCircle, Bookmark, FileText, Send, ShieldCheck, Sparkles, Search, Eye, FileCheck } from 'lucide-react';
 import { checkEligibility } from '../services/api';
 
 export default function OpportunityDetailModal({ opportunity, onClose, isBookmarked, onToggleBookmark }) {
@@ -11,6 +11,7 @@ export default function OpportunityDetailModal({ opportunity, onClose, isBookmar
 
   const [checkResult, setCheckResult] = useState(null);
   const [checking, setChecking] = useState(false);
+  const [showGazetteDoc, setShowGazetteDoc] = useState(false);
 
   if (!opportunity) return null;
 
@@ -152,6 +153,19 @@ export default function OpportunityDetailModal({ opportunity, onClose, isBookmar
 
             {/* Direct Document Action Strip */}
             <div className="gazette-action-strip">
+              {opportunity.notificationReference && (
+                <a
+                  href={`https://www.google.com/search?q=${encodeURIComponent(opportunity.notificationReference + ' ' + (opportunity.organization || ''))}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="gazette-action-btn search-google-btn"
+                  title="Directly verify this official advertisement number on Google and government indexes"
+                >
+                  <Search size={15} />
+                  <span>Verify Gazette Ref on Google</span>
+                </a>
+              )}
+
               {opportunity.notificationPdfUrl && (
                 <a
                   href={opportunity.notificationPdfUrl}
@@ -160,7 +174,7 @@ export default function OpportunityDetailModal({ opportunity, onClose, isBookmar
                   className="gazette-action-btn pdf-btn"
                 >
                   <FileText size={15} />
-                  <span>View Official Gazette PDF / Circular</span>
+                  <span>View Official Notification PDF / Portal</span>
                 </a>
               )}
 
@@ -173,7 +187,98 @@ export default function OpportunityDetailModal({ opportunity, onClose, isBookmar
                 <Send size={15} />
                 <span>Open Direct Application Form ({opportunity.portalName ? opportunity.portalName.split(' ')[0] : 'Portal'})</span>
               </a>
+
+              <button
+                type="button"
+                onClick={() => setShowGazetteDoc(prev => !prev)}
+                className="gazette-action-btn view-notice-btn"
+              >
+                <Eye size={15} />
+                <span>{showGazetteDoc ? 'Hide Official Notice Excerpt' : 'View Gazette Notice Document Excerpt'}</span>
+              </button>
             </div>
+
+            {/* Official Gazette Document Excerpt View */}
+            {showGazetteDoc && (
+              <div className="gazette-document-preview">
+                <div className="gazette-doc-header">
+                  <div className="gazette-doc-emblem">भारत सरकार / GOVERNMENT OF INDIA</div>
+                  <div className="gazette-doc-dept">{opportunity.organization.toUpperCase()}</div>
+                  <div className="gazette-doc-ref">
+                    OFFICIAL NOTIFICATION REF: <strong>{opportunity.notificationReference || 'N/A'}</strong>
+                  </div>
+                  <div className="gazette-doc-date">
+                    PUBLISHED ON: {opportunity.startDate} | SOURCE REGISTRY: {opportunity.portalName || opportunity.sourceAgency}
+                  </div>
+                </div>
+
+                <div className="gazette-doc-body">
+                  <div className="gazette-doc-title-block">
+                    <h4>NOTIFICATION / ADVERTISEMENT EXCERPT</h4>
+                    <p><strong>SUBJECT:</strong> Direct Induction / Examination for {opportunity.title}</p>
+                  </div>
+
+                  <table className="gazette-doc-table">
+                    <tbody>
+                      <tr>
+                        <th>Gazette Reference Code</th>
+                        <td><span className="mono-badge">{opportunity.notificationReference}</span></td>
+                      </tr>
+                      <tr>
+                        <th>Direct Candidate Registration Portal</th>
+                        <td>
+                          <a href={opportunity.directApplyUrl || opportunity.officialUrl} target="_blank" rel="noopener noreferrer">
+                            {opportunity.portalName || opportunity.directApplyUrl} <ExternalLink size={11} style={{ display: 'inline' }} />
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Application Window</th>
+                        <td>
+                          {opportunity.startDate} to <strong style={{ color: '#b91c1c' }}>{opportunity.deadline} (17:00 Hrs IST)</strong>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Application Fee</th>
+                        <td>{opportunity.applicationFee || 'Free / Nil'}</td>
+                      </tr>
+                      <tr>
+                        <th>Statutory Educational Criteria</th>
+                        <td>{opportunity.qualification}</td>
+                      </tr>
+                      <tr>
+                        <th>Age Criteria & Relaxations</th>
+                        <td>Minimum {opportunity.minAge} years, Maximum {opportunity.maxAge} years (Statutory Central/State relaxations applicable)</td>
+                      </tr>
+                      <tr>
+                        <th>Minimum Qualifying Percentage</th>
+                        <td>{opportunity.minPercentage}% aggregate in qualifying degree</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <div className="gazette-doc-verbatim">
+                    <div className="gazette-doc-verbatim-title">
+                      <ShieldCheck size={14} color="#15803d" />
+                      <span>Extracted Gazette Text (NLP Regex Parser):</span>
+                    </div>
+                    <blockquote className="gazette-doc-blockquote">
+                      "{opportunity.extractedDateSnippet}"
+                    </blockquote>
+                    {opportunity.extractedEligibilitySnippet && (
+                      <blockquote className="gazette-doc-blockquote" style={{ marginTop: '0.4rem' }}>
+                        "{opportunity.extractedEligibilitySnippet}"
+                      </blockquote>
+                    )}
+                  </div>
+
+                  <div className="gazette-doc-footer">
+                    <span>STATUS: OFFICIAL NOTIFICATION VERIFIED</span>
+                    <span>ISSUING AUTHORITY: {opportunity.organization}</span>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Description */}
