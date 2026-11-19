@@ -84,13 +84,13 @@ export default function FilterBar({ filters, setFilters, onReset }) {
 
         <select
           className="filter-select"
-          value={filters.status || 'ALL'}
+          value={filters.status || 'ACTIVE'}
           onChange={(e) => handleChange('status', e.target.value)}
         >
-          <option value="ALL">All Statuses</option>
-          <option value="ACTIVE">Active Only</option>
-          <option value="CLOSING_SOON">Closing Soon Only</option>
-          <option value="EXPIRED">Expired</option>
+          <option value="ACTIVE">Open to Apply (Active)</option>
+          <option value="CLOSING_SOON">Closing Soon (&le; 7 Days)</option>
+          <option value="ALL">All Statuses (Including Archived)</option>
+          <option value="EXPIRED">Expired / Archived</option>
         </select>
 
         <select

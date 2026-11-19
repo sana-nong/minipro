@@ -116,12 +116,11 @@ public class DataAggregationEngine {
                         modified = true;
                     }
 
-                    if (modified) {
-                        current.refreshStatus();
-                        current.setNewlySynced(true);
-                        opportunityRepository.save(current);
-                        updated++;
-                    }
+                    // Always mark newlySynced and refresh status for opportunities verified in this sync cycle
+                    current.refreshStatus();
+                    current.setNewlySynced(true);
+                    opportunityRepository.save(current);
+                    updated++;
                 } else {
                     rawOpp.setNewlySynced(true);
                     rawOpp.refreshStatus();
@@ -181,7 +180,7 @@ public class DataAggregationEngine {
 
         if ("UPSC".equals(source.getAgencyCode())) {
             // Apply Corrigendum on CDS-I or CSE
-            Optional<Opportunity> cdsOpt = opportunityRepository.findByUniqueSourceId("UPSC-CDS-I-2026-04");
+            Optional<Opportunity> cdsOpt = opportunityRepository.findByUniqueSourceId("UPSC-CDS-I-2027-01");
             if (cdsOpt.isPresent()) {
                 Opportunity current = cdsOpt.get();
                 Opportunity updatedCds = new Opportunity();
@@ -203,11 +202,11 @@ public class DataAggregationEngine {
                 updatedCds.setOfficialUrl(current.getOfficialUrl());
                 updatedCds.setDirectApplyUrl(current.getDirectApplyUrl());
                 updatedCds.setNotificationPdfUrl(current.getNotificationPdfUrl());
-                updatedCds.setNotificationReference("Notice No. 04/2026-CDS-I (Corrigendum " + cycle + ")");
-                updatedCds.setExtractedDateSnippet("Corrigendum Notice No. 04/2026-CDS-I/EXT-" + cycle + ": Due to server load on the last day, the Commission has officially extended the closing date to " + extended + " till 18:00 Hours IST.");
+                updatedCds.setNotificationReference("Notice No. 01/2027-CDS-I (Corrigendum " + cycle + ")");
+                updatedCds.setExtractedDateSnippet("Corrigendum Notice No. 01/2027-CDS-I/EXT-" + cycle + ": Due to server load on the last day, the Commission has officially extended the closing date to " + extended + " till 18:00 Hours IST.");
                 updatedCds.setPortalName(current.getPortalName());
                 updatedCds.setSourceAgency("UPSC");
-                updatedCds.setUniqueSourceId("UPSC-CDS-I-2026-04");
+                updatedCds.setUniqueSourceId("UPSC-CDS-I-2027-01");
                 parsedOpportunities.add(updatedCds);
             }
         } else if ("DRDO".equals(source.getAgencyCode())) {

@@ -67,7 +67,21 @@ public class SearchFilterService {
             }
 
             if (filter.getStatus() != null) {
-                predicates.add(cb.equal(root.get("status"), filter.getStatus()));
+                if (filter.getStatus() == OpportunityStatus.ACTIVE) {
+                    predicates.add(cb.or(
+                            cb.equal(root.get("status"), OpportunityStatus.ACTIVE),
+                            cb.equal(root.get("status"), OpportunityStatus.CLOSING_SOON)
+                    ));
+                    predicates.add(cb.greaterThanOrEqualTo(root.get("deadline"), LocalDate.now()));
+                } else if (filter.getStatus() == OpportunityStatus.CLOSING_SOON) {
+                    predicates.add(cb.equal(root.get("status"), OpportunityStatus.CLOSING_SOON));
+                    predicates.add(cb.greaterThanOrEqualTo(root.get("deadline"), LocalDate.now()));
+                } else if (filter.getStatus() == OpportunityStatus.EXPIRED) {
+                    predicates.add(cb.or(
+                            cb.equal(root.get("status"), OpportunityStatus.EXPIRED),
+                            cb.lessThan(root.get("deadline"), LocalDate.now())
+                    ));
+                }
             }
 
             if (filter.getNewlySynced() != null && filter.getNewlySynced()) {

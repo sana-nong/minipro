@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Database, RefreshCw, CheckCircle2, Clock, Globe, Terminal, ShieldCheck, Sparkles, ExternalLink, ArrowRight } from 'lucide-react';
 import { triggerSyncAll, triggerSyncSource } from '../services/api';
 
-export default function AggregationEngineView({ sources, onRefreshSources, onRefreshOpportunities }) {
+export default function AggregationEngineView({ sources, onRefreshSources, onRefreshOpportunities, onRefreshStats }) {
   const [logs, setLogs] = useState([
     'System initialized with 26 Verified Government Portals.',
     'Multi-Source Data Aggregation Engine: Online.',
@@ -51,6 +51,7 @@ export default function AggregationEngineView({ sources, onRefreshSources, onRef
 
       if (onRefreshSources) await onRefreshSources();
       if (onRefreshOpportunities) await onRefreshOpportunities();
+      if (onRefreshStats) await onRefreshStats();
     } catch (err) {
       addLog(`Aggregation error: ${err.message}`);
     } finally {
@@ -66,6 +67,7 @@ export default function AggregationEngineView({ sources, onRefreshSources, onRef
       addLog(`Result for ${source.agencyCode}: Status ${res.status} | Scanned ${res.itemsFound} notices | Centralized ${res.newAdded} new | Updated ${res.updated} in ${res.executionTimeMs}ms.`);
       if (onRefreshSources) await onRefreshSources();
       if (onRefreshOpportunities) await onRefreshOpportunities();
+      if (onRefreshStats) await onRefreshStats();
     } catch (err) {
       addLog(`Error syncing ${source.agencyCode}: ${err.message}`);
     } finally {

@@ -27,7 +27,7 @@ export default function App() {
     category: searchParams.get('category') || 'ALL',
     qualification: 'ALL',
     location: 'ALL',
-    status: 'ALL',
+    status: searchParams.get('status') || 'ACTIVE',
     closingInDays: '',
     sortBy: 'deadline',
     newlySynced: false
@@ -233,7 +233,7 @@ export default function App() {
                 category: 'ALL',
                 qualification: 'ALL',
                 location: 'ALL',
-                status: 'ALL',
+                status: 'ACTIVE',
                 closingInDays: '',
                 sortBy: 'deadline',
                 newlySynced: false
@@ -322,6 +322,7 @@ export default function App() {
             sources={sources}
             onRefreshSources={loadSources}
             onRefreshOpportunities={loadOpportunities}
+            onRefreshStats={loadStats}
           />
         )}
 
