@@ -38,7 +38,7 @@ public class OpportunityController {
             @RequestParam(required = false) OpportunityCategory category,
             @RequestParam(required = false) String qualification,
             @RequestParam(required = false) String location,
-            @RequestParam(required = false) OpportunityStatus status,
+            @RequestParam(required = false) String status,
             @RequestParam(required = false) Integer closingInDays,
             @RequestParam(required = false) Integer maxAge,
             @RequestParam(required = false) Double userPercentage,
@@ -50,7 +50,11 @@ public class OpportunityController {
         filter.setCategory(category);
         filter.setQualification(qualification);
         filter.setLocation(location);
-        filter.setStatus(status);
+        if (status != null && !status.trim().isEmpty() && !"ALL".equalsIgnoreCase(status)) {
+            try {
+                filter.setStatus(OpportunityStatus.valueOf(status.trim().toUpperCase()));
+            } catch (IllegalArgumentException ignored) {}
+        }
         filter.setClosingInDays(closingInDays);
         filter.setMaxAge(maxAge);
         filter.setUserPercentage(userPercentage);

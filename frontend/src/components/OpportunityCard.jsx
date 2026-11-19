@@ -47,7 +47,7 @@ export default function OpportunityCard({ opportunity, onSelect, isBookmarked, o
             <Calendar size={13} />
             <strong>{opportunity.deadline}</strong>
             <span style={{ opacity: 0.85 }}>
-              {daysLeft > 0 ? `(${daysLeft}d left)` : daysLeft === 0 ? '(Last day today)' : '(Gazette Extracted)'}
+              {daysLeft > 0 ? `(${daysLeft}d left)` : daysLeft === 0 ? '(Last day today)' : '(Gazette Record)'}
             </span>
           </span>
         </div>
@@ -100,7 +100,9 @@ export default function OpportunityCard({ opportunity, onSelect, isBookmarked, o
 
         {/* Direct Portal Indicator */}
         <div className="portal-indicator-strip">
-          <span style={{ fontSize: '0.75rem', color: '#64748b' }}>Direct Apply Portal:</span>
+          <span style={{ fontSize: '0.75rem', color: '#64748b' }}>
+            {daysLeft < 0 ? 'Gazette Source Portal:' : 'Direct Apply Portal:'}
+          </span>
           <strong style={{ fontSize: '0.78rem', color: '#1e3a8a' }}>
             {opportunity.portalName || (opportunity.sourceAgency + ' Portal')}
           </strong>
@@ -116,17 +118,30 @@ export default function OpportunityCard({ opportunity, onSelect, isBookmarked, o
         </button>
 
         <div style={{ display: 'flex', gap: '0.4rem', alignItems: 'center' }}>
-          {/* Direct Apply Button */}
-          <a
-            href={opportunity.directApplyUrl || opportunity.officialUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="opp-apply-btn"
-            title={`Apply directly on official portal: ${opportunity.portalName || opportunity.directApplyUrl}`}
-          >
-            <Send size={13} />
-            <span>Direct Apply</span>
-          </a>
+          {/* Direct Apply / Official Portal Button */}
+          {daysLeft < 0 ? (
+            <a
+              href={opportunity.directApplyUrl || opportunity.officialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="opp-apply-btn opp-gazette-portal-btn"
+              title={`View official portal: ${opportunity.portalName || opportunity.directApplyUrl}`}
+            >
+              <ExternalLink size={13} />
+              <span>Official Portal</span>
+            </a>
+          ) : (
+            <a
+              href={opportunity.directApplyUrl || opportunity.officialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="opp-apply-btn"
+              title={`Apply directly on official portal: ${opportunity.portalName || opportunity.directApplyUrl}`}
+            >
+              <Send size={13} />
+              <span>Direct Apply</span>
+            </a>
+          )}
 
           {/* Official PDF / Circular Link */}
           {opportunity.notificationPdfUrl && (

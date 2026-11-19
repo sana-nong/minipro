@@ -392,15 +392,27 @@ export default function OpportunityDetailModal({ opportunity, onClose, isBookmar
             <span>{isBookmarked ? 'Bookmarked' : 'Add to Application Tracker'}</span>
           </button>
 
-          <a
-            href={opportunity.directApplyUrl || opportunity.officialUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="sync-quick-btn"
-          >
-            <Send size={16} />
-            <span>Apply Directly on Official Portal</span>
-          </a>
+          {daysLeft < 0 ? (
+            <a
+              href={opportunity.directApplyUrl || opportunity.officialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sync-quick-btn opp-gazette-modal-btn"
+            >
+              <ExternalLink size={16} />
+              <span>Official Portal (Archived Gazette Reference)</span>
+            </a>
+          ) : (
+            <a
+              href={opportunity.directApplyUrl || opportunity.officialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sync-quick-btn"
+            >
+              <Send size={16} />
+              <span>Apply Directly on Official Portal</span>
+            </a>
+          )}
         </div>
       </div>
     </div>
