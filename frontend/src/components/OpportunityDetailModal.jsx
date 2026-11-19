@@ -11,7 +11,7 @@ export default function OpportunityDetailModal({ opportunity, onClose, isBookmar
 
   const [checkResult, setCheckResult] = useState(null);
   const [checking, setChecking] = useState(false);
-  const [showGazetteDoc, setShowGazetteDoc] = useState(false);
+  const [showGazetteDoc, setShowGazetteDoc] = useState(true);
 
   if (!opportunity) return null;
 
@@ -155,11 +155,13 @@ export default function OpportunityDetailModal({ opportunity, onClose, isBookmar
             <div className="gazette-action-strip">
               {opportunity.notificationReference && (
                 <a
-                  href={`https://www.google.com/search?q=${encodeURIComponent(opportunity.notificationReference + ' ' + (opportunity.organization || ''))}`}
+                  href={`https://www.google.com/search?q=${encodeURIComponent(
+                    opportunity.notificationReference.replace(/[()]/g, '') + ' ' + (opportunity.sourceAgency || opportunity.organization || '') + ' recruitment'
+                  )}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="gazette-action-btn search-google-btn"
-                  title="Directly verify this official advertisement number on Google and government indexes"
+                  title="Directly verify this official advertisement on Google and government indexes"
                 >
                   <Search size={15} />
                   <span>Verify Gazette Ref on Google</span>

@@ -303,12 +303,12 @@ public class DataLoader implements CommandLineRunner {
                 today.minusDays(10), today.plusDays(18),
                 "https://www.isro.gov.in",
                 "https://apps.isac.gov.in/",
-                "https://www.isro.gov.in/CurrentOpportunities.html",
-                "Advt. No. ISRO:ICRB:03(EMC):2026",
+                "https://www.isro.gov.in/Careers.html",
+                "Advt. No. ISRO:ICRB:02(EMC)",
                 "Opening Date for Online Registration: 10:00 AM | Last Date for submission of Online Application: " + today.plusDays(18) + " (23:59 PM IST). Payment portal closes 24 hours post registration.",
                 "Para 2.1: BE/B.Tech or equivalent in First Class with an aggregate minimum of 65% marks (average of all semesters) or 6.84/10 CGPA. Age Limit: 28 years as on closing date.",
                 "ISRO Centralised Recruitment Board Portal (apps.isac.gov.in)",
-                "ISRO", "ISRO-SC-ENGG-2026-03"
+                "ISRO", "ISRO-SC-ENGG-2024-02"
         ));
 
         list.add(createOpp(
@@ -325,7 +325,7 @@ public class DataLoader implements CommandLineRunner {
                 "https://barc.gov.in",
                 "https://www.barcocesexam.in/",
                 "https://www.barcocesexam.in/",
-                "BARC OCES/DGFS-2026 Information Brochure",
+                "BARC OCES/DGFS-2024 Information Brochure",
                 "Important Dates: Online Application Window operational on web portal until " + today.plusDays(14) + " (23:59 Hrs). Online Examination slot booking window commences post closure.",
                 "Clause 4.2: Qualifying Degree: B.E./B.Tech./B.Sc. (Engineering) with a minimum of 60% aggregate marks in eligible discipline. Age: Born on or after August 1, 2000 (Max 26 years).",
                 "BARC OCES/DGFS Online Application System (barcocesexam.in)",
@@ -343,14 +343,14 @@ public class DataLoader implements CommandLineRunner {
                 "Engineering Degree or MCA with 60% aggregate. Written Examination + Technical Interview.",
                 21, 30, 60.0, "₹800 (General) | Nil for SC/ST/Women",
                 today.minusDays(8), today.plusDays(5), // Closing soon!
+                "https://www.calicut.nielit.in/nic23/",
+                "https://www.calicut.nielit.in/nic23/",
                 "https://recruitment.nic.in/",
-                "https://recruitment.nic.in/",
-                "https://recruitment.nic.in/",
-                "Advt. No. NIC/SCB/2026/1",
-                "Submission of online application through official NIC recruitment portal https://recruitment.nic.in closes on " + today.plusDays(5) + " (17:30 PM). No physical or offline applications are accepted.",
+                "Advt. No. NIELIT/NIC/2023/1",
+                "Submission of online application through official NIELIT/NIC recruitment portal https://www.calicut.nielit.in/nic23/ closes on " + today.plusDays(5) + " (17:30 PM). Written examination & interview schedule notified online.",
                 "Section 2: Essential Qualification: Bachelor degree in Engineering OR Bachelor in Technology in Computer Science, Computer Engineering, IT, or Electronics. Upper age limit: 30 years as on crucial date.",
-                "National Informatics Centre Recruitment Portal (recruitment.nic.in)",
-                "NIC", "NIC-SCB-MEITY-2026-01"
+                "NIELIT Calicut NIC Portal (calicut.nielit.in/nic23)",
+                "NIC", "NIC-SCB-MEITY-2023-01"
         ));
 
         list.add(createOpp(
@@ -387,8 +387,8 @@ public class DataLoader implements CommandLineRunner {
                 today.minusDays(20), today.plusDays(21),
                 "https://ssc.gov.in",
                 "https://ssc.gov.in/candidate-portal/one-time-registration/home",
-                "https://ssc.gov.in/for-candidates/tentative-calendar",
-                "Notice No. HQ-C11019/12/2024-CGL",
+                "https://ssc.gov.in",
+                "Notice of Combined Graduate Level Examination (SSC CGL-2024)",
                 "Dates for submission of online applications: " + today.minusDays(20) + " to " + today.plusDays(21) + " (23:00 Hrs). Last date and time for making online fee payment: " + today.plusDays(22) + " (23:00 Hrs).",
                 "Para 8.1: Minimum Educational Qualification: Bachelor's Degree from a recognized University or equivalent. Candidates appearing in final year may also apply provisionally. Age: 18-30/32 years.",
                 "Staff Selection Commission OTR Portal (ssc.gov.in)",
@@ -449,13 +449,13 @@ public class DataLoader implements CommandLineRunner {
                 21, 28, 65.0, "₹500 (Exempt for SC/ST/PwD)",
                 today.minusDays(18), today.plusDays(4), // Closing soon!
                 "https://www.hal-india.co.in",
-                "https://www.hal-india.co.in/Careers",
-                "https://www.hal-india.co.in/Careers",
-                "Advt. No. HAL/CHRC-TM/RECT-02/2026",
+                "https://hal-india.co.in/Careers",
+                "https://hal-india.co.in/Careers",
+                "Advt. No. HAL/CHRC-TM/RECT-02",
                 "Online Application System: Candidates are required to apply online through HAL Website www.hal-india.co.in. The online registration portal will close on " + today.plusDays(4) + " at 17:00 Hours IST.",
                 "Clause 3: Bachelor's Degree in Engineering / Technology (B.E./B.Tech) in First Class (65% marks for UR/OBC) from recognized University in Aeronautical, Mechanical, Electrical, Electronics or Computer Science. Upper age limit: 28 years.",
                 "HAL Official Careers Portal (hal-india.co.in/Careers)",
-                "HAL", "HAL-MT-ENGG-2026-02"
+                "HAL", "HAL-MT-ENGG-2024-02"
         ));
 
         list.add(createOpp(
@@ -496,12 +496,12 @@ public class DataLoader implements CommandLineRunner {
                 today.minusDays(16), today.plusDays(15),
                 "https://upsc.gov.in",
                 "https://upsconline.nic.in/upsc/OTRP/",
-                "https://upsc.gov.in/sites/default/files/Notif-CDSE-I-2026-engl.pdf",
-                "Notice No. 04/2026-CDS-I",
+                "https://upsc.gov.in/examinations/active-exams",
+                "Examination Notice No. 04/2024-CDS-I",
                 "Online Applications can be filled up to " + today.plusDays(15) + " till 6.00 PM after which the link will be disabled. No application will be accepted thereafter under any circumstances.",
                 "Section III: (i) For I.M.A. and Officers' Training Academy: Degree of a recognized University or equivalent. (ii) For Indian Naval Academy: Degree in Engineering from a recognized University. (iii) For Air Force Academy: Degree with Physics and Mathematics at 10+2 level or Bachelor of Engineering.",
                 "UPSC Online OTR Portal (upsconline.nic.in)",
-                "UPSC", "UPSC-CDS-I-2026-04"
+                "UPSC", "UPSC-CDS-I-2024-04"
         ));
 
         list.add(createOpp(
@@ -517,12 +517,12 @@ public class DataLoader implements CommandLineRunner {
                 today.minusDays(9), today.plusDays(22),
                 "https://upsc.gov.in",
                 "https://upsconline.nic.in/upsc/OTRP/",
-                "https://upsc.gov.in/sites/default/files/Notif-CSP-2026-engl.pdf",
-                "Notice No. 05/2026-CSP",
+                "https://upsc.gov.in/examinations/active-exams",
+                "Examination Notice No. 05/2024-CSP",
                 "The Online Applications can be filled up to " + today.plusDays(22) + " till 18:00 Hours. Candidates are strongly advised to apply well in advance without waiting for the last date.",
                 "Rule 6: A candidate must hold a Graduate degree of any of the Universities incorporated by an Act of the Central or State Legislature in India. Age: 21 to 32 years as on 1st August 2026.",
                 "UPSC One Time Registration (OTR) System (upsconline.nic.in)",
-                "UPSC", "UPSC-CSE-PRE-2026-05"
+                "UPSC", "UPSC-CSE-PRE-2024-05"
         ));
 
         list.add(createOpp(
