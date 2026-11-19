@@ -4,6 +4,7 @@ import com.sit.govopp.entity.*;
 import com.sit.govopp.repository.ApplicationBookmarkRepository;
 import com.sit.govopp.repository.GovernmentSourceRepository;
 import com.sit.govopp.repository.OpportunityRepository;
+import com.sit.govopp.service.DataAggregationEngine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -22,13 +23,16 @@ public class DataLoader implements CommandLineRunner {
     private final GovernmentSourceRepository sourceRepository;
     private final OpportunityRepository opportunityRepository;
     private final ApplicationBookmarkRepository bookmarkRepository;
+    private final DataAggregationEngine aggregationEngine;
 
     public DataLoader(GovernmentSourceRepository sourceRepository,
                       OpportunityRepository opportunityRepository,
-                      ApplicationBookmarkRepository bookmarkRepository) {
+                      ApplicationBookmarkRepository bookmarkRepository,
+                      DataAggregationEngine aggregationEngine) {
         this.sourceRepository = sourceRepository;
         this.opportunityRepository = opportunityRepository;
         this.bookmarkRepository = bookmarkRepository;
+        this.aggregationEngine = aggregationEngine;
     }
 
     @Override
@@ -36,6 +40,13 @@ public class DataLoader implements CommandLineRunner {
         log.info("Checking and initializing official Government Sources & Opportunities database...");
         seedSources();
         seedOpportunities();
+        log.info("Starting initial live government aggregation crawl across portals...");
+        try {
+            aggregationEngine.syncAllSources();
+            log.info("Initial live aggregation crawl completed successfully!");
+        } catch (Exception e) {
+            log.warn("Initial live aggregation crawl completed with resilient fallback: {}", e.getMessage());
+        }
     }
 
     private void seedSources() {
@@ -248,6 +259,14 @@ public class DataLoader implements CommandLineRunner {
                         "https://i-register.in/igcar",
                         "WEB_SCRAPER",
                         "Premier atomic research institution of DAE conducting Scientific Officer and Junior Research Fellow recruitments."
+                ),
+                new GovernmentSource(
+                        "Employment News (Ministry of Information & Broadcasting)",
+                        "EMP_NEWS",
+                        "https://employmentnews.gov.in",
+                        "https://employmentnews.gov.in/NewEmp/Home.aspx",
+                        "WEB_SCRAPER",
+                        "Official weekly gazette publication of Ministry of Information and Broadcasting publishing consolidated central recruitments across all ministries."
                 )
         );
 
