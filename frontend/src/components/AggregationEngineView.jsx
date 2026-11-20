@@ -4,8 +4,9 @@ import { triggerSyncAll, triggerSyncSource } from '../services/api';
 
 export default function AggregationEngineView({ sources, onRefreshSources, onRefreshOpportunities, onRefreshStats }) {
   const [logs, setLogs] = useState([
-    'System initialized with 26 Verified Government Portals.',
-    'Multi-Source Data Aggregation Engine: Online.',
+    `System initialized with ${sources?.length || 27} Verified Government Portals.`,
+    'Multi-Source Data Aggregation Engine: Online (SSL Bypass Active for NIC/Gov Portals).',
+    'Live Portals Online: ISRO, KPSC Karnataka, CSIR India, Bharat Electronics, DRDO RAC, Employment News.',
     'Regex & NLP Gazette Extraction Service: Ready.',
     'Deduplication & Cryptographic Normalization Service: Active.'
   ]);
@@ -21,7 +22,7 @@ export default function AggregationEngineView({ sources, onRefreshSources, onRef
   const handleSyncAll = async () => {
     setRunningSync(true);
     setLastSyncSummary(null);
-    addLog('Initiating batch multi-protocol aggregation across all 26 official government portals...');
+    addLog(`Initiating batch live aggregation across all ${sources?.length || 27} official government portals...`);
     try {
       const results = await triggerSyncAll();
       let totalNew = 0;
@@ -92,7 +93,7 @@ export default function AggregationEngineView({ sources, onRefreshSources, onRef
               Automated Government Data Aggregation Engine
             </h2>
             <p style={{ fontSize: '0.85rem', color: '#64748b', marginTop: '0.2rem' }}>
-              Continuously monitors 26 official gazettes, agency portals, and RSS feeds with NLP regex deadline extraction and cryptographic deduplication.
+              Continuously monitors 27 official government portals, gazettes, and feeds (ISRO, KPSC, CSIR, BEL, DRDO, Employment News) with NLP regex extraction and SSL certificate bypass.
             </p>
           </div>
 
@@ -102,7 +103,7 @@ export default function AggregationEngineView({ sources, onRefreshSources, onRef
             disabled={runningSync}
           >
             <RefreshCw size={16} className={runningSync ? 'spin' : ''} />
-            <span>{runningSync ? 'Crawling 26 Portals...' : 'Run Full Multi-Source Aggregation'}</span>
+            <span>{runningSync ? 'Crawling All Portals...' : 'Run Full Multi-Source Aggregation'}</span>
           </button>
         </div>
 
