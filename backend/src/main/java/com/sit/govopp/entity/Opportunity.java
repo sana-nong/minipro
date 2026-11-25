@@ -90,6 +90,9 @@ public class Opportunity {
     @Column(nullable = false)
     private Boolean isLiveScraped = false;
 
+    @Column(nullable = false)
+    private Boolean deadlineUndisclosed = false;
+
     @Column(nullable = false, length = 100)
     private String sourceAgency;
 
@@ -119,6 +122,10 @@ public class Opportunity {
     }
 
     public void refreshStatus() {
+        if (Boolean.TRUE.equals(deadlineUndisclosed)) {
+            this.status = OpportunityStatus.ACTIVE;
+            return;
+        }
         if (deadline == null) {
             this.status = OpportunityStatus.ACTIVE;
             return;
@@ -137,8 +144,9 @@ public class Opportunity {
     }
 
     @Transient
-    public long getDaysRemaining() {
-        if (deadline == null) return 0;
+    public Long getDaysRemaining() {
+        if (Boolean.TRUE.equals(deadlineUndisclosed)) return 999L;
+        if (deadline == null) return 0L;
         return ChronoUnit.DAYS.between(LocalDate.now(), deadline);
     }
 
@@ -343,6 +351,14 @@ public class Opportunity {
 
     public void setIsLiveScraped(Boolean isLiveScraped) {
         this.isLiveScraped = isLiveScraped;
+    }
+
+    public Boolean getDeadlineUndisclosed() {
+        return deadlineUndisclosed != null ? deadlineUndisclosed : false;
+    }
+
+    public void setDeadlineUndisclosed(Boolean deadlineUndisclosed) {
+        this.deadlineUndisclosed = deadlineUndisclosed;
     }
 
     public String getSourceAgency() {

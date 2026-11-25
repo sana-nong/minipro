@@ -60,13 +60,21 @@ export default function OpportunityCard({ opportunity, onSelect, isBookmarked, o
             )}
           </div>
 
-          <span className={`deadline-indicator ${daysLeft < 0 ? 'deadline-archived' : isClosingSoon ? 'deadline-closing' : 'deadline-active'}`}>
-            <Calendar size={13} />
-            <strong>{opportunity.deadline}</strong>
-            <span style={{ opacity: 0.85 }}>
-              {daysLeft > 0 ? `(${daysLeft}d left)` : daysLeft === 0 ? '(Last day today)' : '(Gazette Record)'}
+          {opportunity.deadlineUndisclosed ? (
+            <span className="deadline-indicator deadline-active" style={{ background: '#ecfdf5', color: '#047857', border: '1px solid #a7f3d0' }}>
+              <Calendar size={13} />
+              <strong>Window Open</strong>
+              <span style={{ opacity: 0.9 }}>(Closing Date TBA)</span>
             </span>
-          </span>
+          ) : (
+            <span className={`deadline-indicator ${daysLeft < 0 ? 'deadline-archived' : isClosingSoon ? 'deadline-closing' : 'deadline-active'}`}>
+              <Calendar size={13} />
+              <strong>{opportunity.deadline}</strong>
+              <span style={{ opacity: 0.85 }}>
+                {daysLeft > 0 ? `(${daysLeft}d left)` : daysLeft === 0 ? '(Last day today)' : '(Gazette Record)'}
+              </span>
+            </span>
+          )}
         </div>
 
         <div className="opp-org">

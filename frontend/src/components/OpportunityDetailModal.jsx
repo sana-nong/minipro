@@ -72,12 +72,21 @@ export default function OpportunityDetailModal({ opportunity, onClose, isBookmar
             </div>
             <div>
               <p style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600 }}>OFFICIAL GAZETTE DEADLINE</p>
-              <p style={{ fontSize: '0.95rem', fontWeight: 800, color: daysLeft < 0 ? '#1e3a8a' : '#b91c1c' }}>
-                {opportunity.deadline}
-              </p>
-              <span style={{ fontSize: '0.78rem', color: daysLeft < 0 ? '#1e3a8a' : '#dc2626', fontWeight: 600 }}>
-                {daysLeft > 0 ? `(${daysLeft} days remaining)` : daysLeft === 0 ? '(Closes Today!)' : '(Exact Extracted Gazette Date)'}
-              </span>
+              {opportunity.deadlineUndisclosed ? (
+                <>
+                  <p style={{ fontSize: '0.95rem', fontWeight: 800, color: '#047857' }}>Window Open (TBA)</p>
+                  <span style={{ fontSize: '0.78rem', color: '#059669', fontWeight: 600 }}>(Closing date to be announced by Commission)</span>
+                </>
+              ) : (
+                <>
+                  <p style={{ fontSize: '0.95rem', fontWeight: 800, color: daysLeft < 0 ? '#1e3a8a' : '#b91c1c' }}>
+                    {opportunity.deadline}
+                  </p>
+                  <span style={{ fontSize: '0.78rem', color: daysLeft < 0 ? '#1e3a8a' : '#dc2626', fontWeight: 600 }}>
+                    {daysLeft > 0 ? `(${daysLeft} days remaining)` : daysLeft === 0 ? '(Closes Today!)' : '(Exact Extracted Gazette Date)'}
+                  </span>
+                </>
+              )}
             </div>
             <div>
               <p style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600 }}>LOCATION</p>
@@ -237,7 +246,11 @@ export default function OpportunityDetailModal({ opportunity, onClose, isBookmar
                       <tr>
                         <th>Application Window</th>
                         <td>
-                          {opportunity.startDate} to <strong style={{ color: '#b91c1c' }}>{opportunity.deadline} (17:00 Hrs IST)</strong>
+                          {opportunity.deadlineUndisclosed ? (
+                            <strong style={{ color: '#047857' }}>Commenced {opportunity.startDate} (Closing Date to be announced by Department)</strong>
+                          ) : (
+                            <>{opportunity.startDate} to <strong style={{ color: '#b91c1c' }}>{opportunity.deadline} (17:00 Hrs IST)</strong></>
+                          )}
                         </td>
                       </tr>
                       <tr>

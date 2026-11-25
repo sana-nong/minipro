@@ -97,7 +97,11 @@ export default function ApplicationTrackerView({ bookmarks, onRefreshBookmarks }
                   <div style={{ display: 'flex', gap: '1rem', fontSize: '0.8rem', color: '#64748b', flexWrap: 'wrap' }}>
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
                       <Calendar size={13} />
-                      Deadline: <strong>{opp.deadline}</strong> ({opp.daysRemaining} days left)
+                      {opp.deadlineUndisclosed ? (
+                        <span>Deadline: <strong style={{ color: '#047857' }}>Window Open (TBA)</strong></span>
+                      ) : (
+                        <span>Deadline: <strong>{opp.deadline}</strong> ({opp.daysRemaining} days left)</span>
+                      )}
                     </span>
                     <span>Qualification: {opp.qualification}</span>
                   </div>
